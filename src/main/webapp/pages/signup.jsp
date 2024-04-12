@@ -38,7 +38,7 @@
 <input type="text" id="password" name="password" required>
 <label>Retype Password:</label>
 <input type="text" id="retypePassword" name="retypePassword" required>
-<button type="submit">Signup</button>
+<button type="submit">Sign up</button>
 </form>
 
 

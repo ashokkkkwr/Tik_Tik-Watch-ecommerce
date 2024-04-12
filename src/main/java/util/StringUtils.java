@@ -6,7 +6,7 @@ public class StringUtils {
 	public static final String SIGNUP ="INSERT INTO users "
 			+"(userName,email,location,phone,password)"
 			+"VALUES(?,?,?,?,?)";
-	public static final String GET_LOGIN_INFO = "SELECT * FROM users WHERE username = ?";
+	public static final String GET_LOGIN_INFO = "SELECT * FROM users WHERE email = ?";
 	public static final String GET_USERNAME = "SELECT * FROM users WHERE userName=?";
 	public static final String GET_PHONE = "SELECT * FROM users WHERE phone=?";
 	public static final String GET_EMAIL = "SELECT * FROM users WHERE EMAIL=?";
@@ -34,7 +34,7 @@ public class StringUtils {
 	public static final String ERROR_MESSAGE = "Error message";
 	//jsp routes
 	public static final String SIGNUP_PAGE = "/pages/signup.jsp";
-	public static final String LOGIN_PAGE = "pages/login.jsp";
+	public static final String LOGIN_PAGE = "/pages/login.jsp";
 	public static final String HOME_PAGE = "/pages/home.jsp";
 	//servlets Routes
 	public static final String SIGNUP_SERVLET="/SignupServlet";

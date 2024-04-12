@@ -65,28 +65,32 @@ public class DatabaseController {
             return -1;
         }
     }
-    public int getLogin(String email,String password) {
-    	try(Connection con = getConnection()){
-    		PreparedStatement user= con.prepareStatement(StringUtils.GET_LOGIN_INFO);
-    		user.setString(1, email);
-    		ResultSet rs= user.executeQuery();
-    		 if (rs.next()) {
-                 String userDb = rs.getString("email");
-                 String encryptedPassword = rs.getString("password");
+    public int getLogin(String email, String password) {
+        try (Connection con = getConnection()) {
+            PreparedStatement user = con.prepareStatement(StringUtils.GET_LOGIN_INFO);
+            user.setString(1, email);
+            ResultSet rs = user.executeQuery();
+            if (rs.next()) {
+                String userDb = rs.getString("email");
+                String encryptedPassword = rs.getString("password");
 
-                 // Decrypt password from database and compare
-                 String decryptedPassword = PasswordEncryptionWithAes.decryptPassword(encryptedPassword, "U3CdwubLD5yQbUOG92ZnHw==");
+                System.out.println("email from DB: " + userDb);
+                System.out.println("Encrypted Password from DB: " + encryptedPassword);
 
-                 if (decryptedPassword!=null && userDb.equals(email) && decryptedPassword.equals(password)) {
-                     return 1; // Login successful
-                 } else {
-                     return 0; // Password mismatch
-                 }
-             } else {
-                 // No matching record found
-                 return 0;
-             }
-    	}catch (SQLException | ClassNotFoundException ex) {
+                // Decrypt password from database and compare
+                String decryptedPassword = PasswordEncryptionWithAes.decryptPassword(encryptedPassword, "U3CdwubLD5yQbUOG92ZnHw==");
+                System.out.println("Decrypted Password: " + decryptedPassword);
+
+                if (decryptedPassword != null && userDb.equals(email) && decryptedPassword.equals(password)) {
+                    return 1; // Login successful
+                } else {
+                    return 0; // Password mismatch
+                }
+            } else {
+                // No matching record found
+                return 0;
+            }
+        } catch (SQLException | ClassNotFoundException ex) {
             ex.printStackTrace(); // Log the exception for debugging
             return -1;
         } catch (Exception e) {
@@ -94,6 +98,7 @@ public class DatabaseController {
             return -1;
         }
     }
+
     public UsersModel getUserDetails(String email) throws ClassNotFoundException {
         try (Connection connection = getConnection();
              PreparedStatement statement = connection.prepareStatement(StringUtils.GET_LOGIN_INFO)) {
