@@ -5,8 +5,11 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import util.ProductStringUtils;
 import util.StringUtils;
 import model.PasswordEncryptionWithAes;
+import model.ProductsModel;
 import model.UsersModel;
 
 public class DatabaseController {
@@ -124,4 +127,39 @@ public class DatabaseController {
             return null;
         }
     }
+    public int addProduct(ProductsModel productModel) {
+        try (Connection con = getConnection();
+             PreparedStatement product = con.prepareStatement(ProductStringUtils.INSERT_PRODUCT);
+             PreparedStatement checkProduct = con.prepareStatement(ProductStringUtils.GET_PRODUCT_NAME)) {
+
+            // Check if the product already exists
+            checkProduct.setString(1, productModel.getProductName());
+            try (ResultSet checkProductRs = checkProduct.executeQuery()) {
+                if (checkProductRs.next()) {
+                    return -3; // Product already exists
+                }
+            }
+
+            // Insert the new product
+            product.setString(1, productModel.getProductName());
+            product.setString(2, productModel.getProductDescription());
+            product.setString(3, productModel.getProductCategory());
+            product.setInt(4, productModel.getProductPrice());
+            product.setString(5, productModel.getProductAvailability());
+
+            // Execute the insert statement
+            int result = product.executeUpdate();
+
+            // Check if the insertion was successful
+            return result > 0 ? 1 : 0;
+
+        } catch (SQLException | ClassNotFoundException ex) {
+            ex.printStackTrace(); // Log the exception for debugging
+            return -1; // Error occurred
+        }catch(Exception e) {
+        	e.printStackTrace();
+        	return -1;
+        }
+    }
+
 }
