@@ -62,9 +62,8 @@ public class AuthenticationFilter implements Filter {
             chain.doFilter(request, response);
         }
     }
-
     @Override
     public void init(FilterConfig arg0) throws ServletException {
-        // Initialization code, if any
+    		// Initialization code, if any
     }
 }
