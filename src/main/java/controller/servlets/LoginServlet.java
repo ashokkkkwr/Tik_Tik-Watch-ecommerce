@@ -49,6 +49,7 @@ public class LoginServlet extends HttpServlet {
         	response.addCookie(userCookie);
         	
         	UsersModel user=null;
+        	
         	try {
         		user=dbController.getUserDetails(email);
         		

@@ -51,7 +51,7 @@ public class AuthenticationFilter implements Filter {
             chain.doFilter(req, res);
             return;
         }
-        if (!isLoggedIn && (isProductServlet || uri.endsWith("home.jsp"))) {
+        if (isLoggedIn && (isProductServlet || uri.endsWith("home.jsp"))) {
             chain.doFilter(req, res);
             return;
         }
