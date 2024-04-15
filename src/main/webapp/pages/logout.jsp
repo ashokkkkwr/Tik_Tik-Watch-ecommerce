@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+ <div class="container">
+        <h2>Are you sure you want to logout?</h2>
+        <button onclick="logout()">Logout</button>
+    </div>
 </body>
 </html>
