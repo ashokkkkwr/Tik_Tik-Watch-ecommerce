@@ -38,10 +38,11 @@ public class SignupServlet extends HttpServlet {
         String location = request.getParameter(StringUtils.LOCATION);
         String phone = request.getParameter(StringUtils.PHONE);
         String password = request.getParameter(StringUtils.PASSWORD);
+        String isAdmin = request.getParameter(StringUtils.IS_ADMIN);
         String retypePassword = request.getParameter(StringUtils.RETYPE_PASSWORD);
 
         if (password.equals(retypePassword)) {
-            UsersModel userModel = new UsersModel(userName, email, location, phone, password);
+            UsersModel userModel = new UsersModel(userName, email, location, phone, password, isAdmin);
             int result = dbController.addUser(userModel);
 
             switch (result) {

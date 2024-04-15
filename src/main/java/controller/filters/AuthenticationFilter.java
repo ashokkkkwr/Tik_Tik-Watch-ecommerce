@@ -33,21 +33,25 @@ public class AuthenticationFilter implements Filter {
         boolean isLogin = uri.endsWith("login.jsp");
         boolean isLoginServlet = uri.endsWith("LoginServlet");
         boolean isLogoutServlet = uri.endsWith("LogoutServlet");
+        boolean isProductServlet = uri.endsWith("ProductServlet");
 
         HttpSession session = req.getSession(false);
-        boolean isLoggedIn = session != null && session.getAttribute("user") != null;
+        boolean isLoggedIn = session != null && session.getAttribute("email") != null;
 
         if (uri.endsWith("login.jsp") || uri.endsWith("signup.jsp")) {
             chain.doFilter(req, res);
             return;
         }
-
         if(uri.endsWith("home.jsp")) {
             chain.doFilter(request, response);
             return;
         }
 
         if (!isLoggedIn && (isSignupServlet || uri.endsWith("signup.jsp"))) {
+            chain.doFilter(req, res);
+            return;
+        }
+        if (!isLoggedIn && (isProductServlet || uri.endsWith("home.jsp"))) {
             chain.doFilter(req, res);
             return;
         }

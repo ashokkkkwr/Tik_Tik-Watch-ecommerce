@@ -68,7 +68,7 @@ public class DatabaseController {
             return -1;
         }
     }
-    public int getLogin(String email, String password) {
+    public int getLogin(String email, String password, String isAdmin) {
         try (Connection con = getConnection()) {
             PreparedStatement user = con.prepareStatement(StringUtils.GET_LOGIN_INFO);
             user.setString(1, email);
@@ -76,16 +76,20 @@ public class DatabaseController {
             if (rs.next()) {
                 String userDb = rs.getString("email");
                 String encryptedPassword = rs.getString("password");
-
+                String admin = rs.getString("is_Admin");
                 System.out.println("email from DB: " + userDb);
                 System.out.println("Encrypted Password from DB: " + encryptedPassword);
-
+                System.out.println("is admin is"+admin);
                 // Decrypt password from database and compare
                 String decryptedPassword = PasswordEncryptionWithAes.decryptPassword(encryptedPassword, "U3CdwubLD5yQbUOG92ZnHw==");
                 System.out.println("Decrypted Password: " + decryptedPassword);
 
                 if (decryptedPassword != null && userDb.equals(email) && decryptedPassword.equals(password)) {
-                    return 1; // Login successful
+                   if(admin != null) {
+                	   return 2;//login as admin successfull.
+                   }else {
+                	return 1;
+                   }// Login successful
                 } else {
                     return 0; // Password mismatch
                 }
@@ -136,7 +140,7 @@ public class DatabaseController {
             checkProduct.setString(1, productModel.getProductName());
             try (ResultSet checkProductRs = checkProduct.executeQuery()) {
                 if (checkProductRs.next()) {
-                    return -3; // Product already exists
+                    return -2; // Product already exists
                 }
             }
 
@@ -144,7 +148,7 @@ public class DatabaseController {
             product.setString(1, productModel.getProductName());
             product.setString(2, productModel.getProductDescription());
             product.setString(3, productModel.getProductCategory());
-            product.setInt(4, productModel.getProductPrice());
+            product.setString(4, productModel.getProductPrice());
             product.setString(5, productModel.getProductAvailability());
 
             // Execute the insert statement

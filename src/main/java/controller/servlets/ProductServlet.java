@@ -18,7 +18,7 @@ import model.ProductsModel;
 import util.ProductStringUtils;
 
 
-@WebServlet(asyncSupported = true, urlPatterns = { ProductStringUtils.REGISTER_SERVLET })
+@WebServlet(asyncSupported = true, urlPatterns = { ProductStringUtils.PRODUCT_SERVLET })
 public class ProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	DatabaseController dbController = new DatabaseController();
@@ -51,49 +51,39 @@ public class ProductServlet extends HttpServlet {
 
  
         
-		ProductsModel studentModel = new ProductsModel(productName, productDescription, productCategory, productPrice, productAvailability);
+		ProductsModel productModel = new ProductsModel(productName, productDescription, productCategory, productPrice, productAvailability);
 		
-		int result = dbController.addStudent(studentModel);
+		int result = dbController.addProduct(productModel);
 		System.out.println(result);
 		
 
 
-		if (password.equals(retypePassword)) {
+	
 			switch (result) {
 				case 1 -> {
-					request.setAttribute(StringUtils.SUCCESS_MESSAGE, StringUtils.SUCCESS_REGISTER_MESSAGE);
-				    response.sendRedirect(request.getContextPath() + StringUtils.LOGIN_PAGE);
+					request.setAttribute(ProductStringUtils.SUCCESS_MESSAGE, ProductStringUtils.SUCCESSFUL_PRODUCT_ADDED_MESSAGE);
+				    response.sendRedirect(request.getContextPath() + ProductStringUtils.HOME_PAGE);
 				}
 				case 0 -> {
-					request.setAttribute(StringUtils.ERROR_MESSAGE, StringUtils.ERROR_REGISTER_MESSAGE);
-				    request.getRequestDispatcher(StringUtils.REGISTER_PAGE).forward(request, response);
+					request.setAttribute(ProductStringUtils.ERROR_MESSAGE, ProductStringUtils.ERROR_PRODUCT_MESSAGE_MESSAGE);
+				    request.getRequestDispatcher(ProductStringUtils.HOME_PAGE).forward(request, response);
 				}
 				case -1 -> {
-					request.setAttribute(StringUtils.ERROR_MESSAGE, StringUtils.SERVER_ERROR_MESSAGE);
-				    request.getRequestDispatcher(StringUtils.REGISTER_PAGE).forward(request, response);
+					request.setAttribute(ProductStringUtils.ERROR_MESSAGE, ProductStringUtils.SERVER_ERROR_MESSAGE);
+				    request.getRequestDispatcher(ProductStringUtils.HOME_PAGE).forward(request, response);
 				}
 				case -2 -> {
-					request.setAttribute(StringUtils.ERROR_MESSAGE, StringUtils.USERNAME_ERROR_MESSAGE);
-				    request.getRequestDispatcher(StringUtils.REGISTER_PAGE).forward(request, response);
+					request.setAttribute(ProductStringUtils.ERROR_MESSAGE, ProductStringUtils.PRODUCT_ERROR_MESSAGE);
+				    request.getRequestDispatcher(ProductStringUtils.HOME_PAGE).forward(request, response);
 				}
-				case -3 -> {
-					request.setAttribute(StringUtils.ERROR_MESSAGE, StringUtils.EMAIL_ERROR_MESSAGE);
-				    request.getRequestDispatcher(StringUtils.REGISTER_PAGE).forward(request, response);
-				}
-				case -4 -> {
-					request.setAttribute(StringUtils.ERROR_MESSAGE, StringUtils.PHONE_NUMBER_ERROR_MESSAGE);
-				    request.getRequestDispatcher(StringUtils.REGISTER_PAGE).forward(request, response);
-				}
+				
 				default -> {
-					request.setAttribute(StringUtils.ERROR_MESSAGE, StringUtils.SERVER_ERROR_MESSAGE);
-				    request.getRequestDispatcher(StringUtils.REGISTER_PAGE).forward(request, response);
+					request.setAttribute(ProductStringUtils.ERROR_MESSAGE, ProductStringUtils.SERVER_ERROR_MESSAGE);
+				    request.getRequestDispatcher(ProductStringUtils.HOME_PAGE).forward(request, response);
 				}
 			}
 		}
-		else {
-			request.setAttribute(StringUtils.ERROR_MESSAGE, StringUtils.PASSWORD_UNMATCHED_ERROR_MESSAGE);
-		    request.getRequestDispatcher(StringUtils.REGISTER_PAGE).forward(request, response);
-		}
-	}}
+	
+	}
 
 

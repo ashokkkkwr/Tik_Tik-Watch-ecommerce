@@ -12,6 +12,7 @@ public class StringUtils {
 	public static final String GET_EMAIL = "SELECT * FROM users WHERE EMAIL=?";
 	public static final String GET_ALL_USERS = "SELECT * FROM users";
 //storing in global variables
+	public static final String IS_ADMIN = "is_admin";
 	public static final String USERNAME = "userName";
 	public static final String EMAIL = "email";
 	public static final String LOCATION = "location";
@@ -36,6 +37,7 @@ public class StringUtils {
 	public static final String SIGNUP_PAGE = "/pages/signup.jsp";
 	public static final String LOGIN_PAGE = "/pages/login.jsp";
 	public static final String HOME_PAGE = "/pages/home.jsp";
+	public static final String ADMIN_PAGE ="/pages/admin.jsp";
 	//servlets Routes
 	public static final String SIGNUP_SERVLET="/SignupServlet";
 	public static final String LOGIN_SERVLET = "/LoginServlet";
