@@ -28,40 +28,27 @@ public class AuthenticationFilter implements Filter {
         HttpServletResponse res = (HttpServletResponse) response;
 
         String uri = req.getRequestURI();
-
-        boolean isSignupServlet = uri.endsWith("SignupServlet");
-        boolean isLogin = uri.endsWith("login.jsp");
-        boolean isLoginServlet = uri.endsWith("LoginServlet");
-        boolean isLogoutServlet = uri.endsWith("LogoutServlet");
-        boolean isProductServlet = uri.endsWith("ProductServlet");
-
         HttpSession session = req.getSession(false);
         boolean isLoggedIn = session != null && session.getAttribute("email") != null;
 
+        // Allow access to login and signup pages without checking for authentication
         if (uri.endsWith("login.jsp") || uri.endsWith("signup.jsp")) {
             chain.doFilter(req, res);
             return;
         }
-        if(uri.endsWith("home.jsp")) {
-            chain.doFilter(request, response);
-            return;
-        }
-        if (!isLoggedIn && (isSignupServlet || uri.endsWith("signup.jsp"))) {
-            chain.doFilter(req, res);
-            return;
-        }
-        if (isLoggedIn && (isProductServlet || uri.endsWith("home.jsp"))) {
-            chain.doFilter(req, res);
-            return;
-        }
-        if (!isLoggedIn && !(isLogin || isLoginServlet)) {
+
+        // Redirect to login page if not logged in and trying to access restricted pages
+        if (!isLoggedIn && !(uri.endsWith("LoginServlet") || uri.endsWith("SignupServlet"))) {
             res.sendRedirect(req.getContextPath() + "/pages/login.jsp");
-        } else {
-            chain.doFilter(request, response);
+            return;
         }
+
+        // Allow access to other pages if logged in
+        chain.doFilter(request, response);
     }
+
     @Override
     public void init(FilterConfig arg0) throws ServletException {
-    		// Initialization code, if any
+        // Initialization code, if any
     }
 }
