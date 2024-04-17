@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import util.ProductStringUtils;
 import util.StringUtils;
@@ -131,6 +133,7 @@ public class DatabaseController {
             return null;
         }
     }
+
     public int addProduct(ProductsModel productModel) {
         try (Connection con = getConnection();
              PreparedStatement product = con.prepareStatement(ProductStringUtils.INSERT_PRODUCT);

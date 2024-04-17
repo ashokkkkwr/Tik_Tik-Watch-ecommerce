@@ -46,7 +46,6 @@ public class AuthenticationFilter implements Filter {
             chain.doFilter(request, response);
             return;
         }
-
         if (!isLoggedIn && (isSignupServlet || uri.endsWith("signup.jsp"))) {
             chain.doFilter(req, res);
             return;
@@ -55,7 +54,6 @@ public class AuthenticationFilter implements Filter {
             chain.doFilter(req, res);
             return;
         }
-
         if (!isLoggedIn && !(isLogin || isLoginServlet)) {
             res.sendRedirect(req.getContextPath() + "/pages/login.jsp");
         } else {

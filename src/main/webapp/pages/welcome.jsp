@@ -1,7 +1,7 @@
 
 	<%
 		String userSession = (String) session.getAttribute("email");
-		String cookieUsername = null;
+		String cookieUsername = request.getParameter("email");
 		String cookieSessionID = null;
 		
 		Cookie[] cookies = request.getCookies();
@@ -20,6 +20,12 @@
 		<a href="${pageContext.request.contextPath}/StudentServlet">
 			<button class="btn btn-primary">Continue to Home Page</button>
 		</a>
+		<script>
+  if (document.cookie.indexOf("email=;") !== -1) {
+    // Cookie deleted, refresh the page
+    window.location.reload();
+  }
+</script>
 	</div>
 	
 	
