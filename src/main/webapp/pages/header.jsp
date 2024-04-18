@@ -8,7 +8,7 @@
 			</h1>
 			<ul class="main-nav">
 				<li><a href="${pageContext.request.contextPath}/home.jsp">Home</a>
-				<li><a href="${pageContext.request.contextPath}/StudentServlet">Students</a>
+				<li><a href="${pageContext.request.contextPath}/UsersServlet">Students</a>
 				<li>
 					<form action="${pageContext.request.contextPath}/LogoutServlet" method="post">
 						<button type="submit" class="btn btn-danger">
