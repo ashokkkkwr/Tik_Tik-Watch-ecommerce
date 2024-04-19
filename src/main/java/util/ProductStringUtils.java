@@ -13,6 +13,7 @@ public class ProductStringUtils {
     public static final String PRODUCT_PRICE = "prod_price";
     public static final String PRODUCT_AVAILABILITY = "prod_availability";
 
+    
 	public static final String SUCCESSFUL_PRODUCT_ADDED_MESSAGE="Successful product added.";
 	public static final String SUCCESS_MESSAGE = "Successful message";
 	public static final String ERROR_MESSAGE = "Error message";
