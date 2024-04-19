@@ -93,6 +93,7 @@ public class LoginServlet extends HttpServlet {
           }
 		
 		else if (loginResult == 0) {
+			System.out.println("ya chai ho la");
               request.setAttribute(StringUtils.ERROR_MESSAGE, StringUtils.ERROR_LOGIN_MESSAGE);
               request.getRequestDispatcher(StringUtils.LOGIN_PAGE).forward(request, response);
           } else {
