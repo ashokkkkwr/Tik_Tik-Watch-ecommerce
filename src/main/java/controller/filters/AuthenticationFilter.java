@@ -41,11 +41,12 @@ public class AuthenticationFilter implements Filter {
         	 res.sendRedirect(req.getContextPath() + "/pages/admin.jsp");
              return;
         }
+        
         if(isLoggedIn && isAdminJ) {
        	 res.sendRedirect(req.getContextPath() + "/pages/admin.jsp");
             return;
        }
-        if (uri.endsWith("login.jsp") || uri.endsWith("signup.jsp")) {
+        if (uri.endsWith("login.jsp") || uri.endsWith("signup.jsp") || uri.endsWith(".css")) {
             chain.doFilter(req, res);
             return;
         }
@@ -55,10 +56,11 @@ public class AuthenticationFilter implements Filter {
             res.sendRedirect(req.getContextPath() + "/pages/login.jsp");
             return;
         }
-
+      
         // Allow access to other pages if logged in
         chain.doFilter(request, response);
     }
+
 
     @Override
     public void init(FilterConfig arg0) throws ServletException {
