@@ -17,9 +17,7 @@
 	<div class="container mt-5">
 		<h1>Hello <%=cookieUsername %>. Welcome to our page!</h1>
 		<h3>Cookie Session ID is <%= cookieSessionID %></h3>
-		<a href="${pageContext.request.contextPath}/StudentServlet">
-			<button class="btn btn-primary">Continue to Home Page</button>
-		</a>
+		
 		<script>
   if (document.cookie.indexOf("email=;") !== -1) {
     // Cookie deleted, refresh the page

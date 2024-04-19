@@ -25,6 +25,8 @@
         <% 
         }
         %>
+        
+        
 <form action="${pageContext.request.contextPath}/SignupServlet" method="post">
 <label>UserName:</label>
 <input type="text" id="userName" name="userName" required>

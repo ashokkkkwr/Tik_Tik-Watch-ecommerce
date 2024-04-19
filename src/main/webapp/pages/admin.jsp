@@ -7,17 +7,38 @@
 <title>Insert title here</title>
 </head>
 <body>
-<header>
-        <h1>Admin Panel</h1>
-    </header>
-    <nav>
-        <a href="#">Dashboard</a>
-        <a href="#">Users</a>
-        <a href="#">Settings</a>
-    </nav>
-    <section>
-        <h2>Welcome to the Admin Panel</h2>
-        <p>This is where you can manage your website or application.</p>
-    </section>
+  <jsp:include page="adminHeader.jsp"></jsp:include>  
+
+-
+
+
+
+
+    <form action="${pageContext.request.contextPath}/ProductServlet" method="post">
+        <div>
+            <label for="productName">Product Name:</label>
+            <input type="text" id="productName" name="prod_name" required>
+        </div>
+        <div>
+            <label for="productDescription">Product Description:</label>
+            <input type="text" id="productDescription" name="prod_description" required>
+        </div>
+        <div>
+            <label for="productCategory">Product Category:</label>
+            <input type="text" id="productCategory" name="prod_category" required>
+        </div>
+        <div>
+            <label for="productPrice">Product Price:</label>
+            <input type="number" id="productPrice" name="prod_price" required>
+        </div>
+        <div>
+            <label for="productAvailability">Product Availability:</label>
+            <input type="text" id="productAvailability" name="prod_availability" required>
+        </div>
+        <button type="submit">Add Product</button>
+    </form>
+
+    <jsp:include page="welcome.jsp"></jsp:include>
+
 </body>
 </html>

@@ -133,6 +133,23 @@ public class DatabaseController {
             return null;
         }
     }
+    public List<UsersModel> getAllUsers() {
+        List<UsersModel> users = new ArrayList<>();
+        try (Connection con = getConnection()) {
+            PreparedStatement st = con.prepareStatement(StringUtils.GET_ALL_USERS);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                UsersModel user = new UsersModel();
+                user.setEmail(rs.getString("email"));
+                user.setLocation(rs.getString("location"));
+                // Populate other fields as needed
+                users.add(user);
+            }
+        } catch (SQLException | ClassNotFoundException ex) {
+            ex.printStackTrace(); // Log the exception for debugging
+        }
+        return users;
+    }    
 
     public int addProduct(ProductsModel productModel) {
         try (Connection con = getConnection();

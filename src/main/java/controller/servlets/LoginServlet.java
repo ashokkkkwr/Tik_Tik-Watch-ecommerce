@@ -42,7 +42,7 @@ public class LoginServlet extends HttpServlet {
 			System.out.println("yo user ko?");
 			HttpSession userSession = request.getSession();
         	userSession.setAttribute("email", email);
-        	userSession.setMaxInactiveInterval(30*3);
+        	userSession.setMaxInactiveInterval(30*60);
         	
         	Cookie userCookie = new Cookie("email", email);
         	userCookie.setMaxAge(30*60);
@@ -68,10 +68,10 @@ public class LoginServlet extends HttpServlet {
 		else if(loginResult == 2){//checks for admin
 			System.out.println("admin ko ma puge?");
 			HttpSession userSession = request.getSession();
-        	userSession.setAttribute("email", email);
-        	userSession.setMaxInactiveInterval(30*3);
+        	userSession.setAttribute("Adminemail", email);
+        	userSession.setMaxInactiveInterval(30*60);
         	
-        	Cookie userCookie = new Cookie("email", email);
+        	Cookie userCookie = new Cookie("adminemail", email);
         	userCookie.setMaxAge(30*60);
         	response.addCookie(userCookie);
         	
@@ -93,6 +93,7 @@ public class LoginServlet extends HttpServlet {
           }
 		
 		else if (loginResult == 0) {
+			System.out.println("ya chai ho la");
               request.setAttribute(StringUtils.ERROR_MESSAGE, StringUtils.ERROR_LOGIN_MESSAGE);
               request.getRequestDispatcher(StringUtils.LOGIN_PAGE).forward(request, response);
           } else {
