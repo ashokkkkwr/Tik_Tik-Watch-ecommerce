@@ -6,7 +6,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}../pages/styles/login.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/pages/styles/login.css">
 
 <style>
 body {
