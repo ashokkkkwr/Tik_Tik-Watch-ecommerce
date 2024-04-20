@@ -1,24 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-        
-    <wb-module deploy-name="Tik_Tik1">
-                
-        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
-                
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-        <dependent-module archiveName="mysql-connector-j-8.3.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/tiger/Downloads/mysql-connector-j-8.3.0/mysql-connector-j-8.3.0/mysql-connector-j-8.3.0.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="taglibs-standard-impl-1.2.5.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/tiger/Downloads/taglibs1.2.5_1609282a-793d-488b-917f-6ed7eb2752ed_170833_/taglibs-standard-impl-1.2.5.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="taglibs-standard-spec-1.2.5.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/tiger/Downloads/taglibs1.2.5_1609282a-793d-488b-917f-6ed7eb2752ed_170833_/taglibs-standard-spec-1.2.5.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-                
-        <property name="context-root" value="Tik_Tik1"/>
-                
-        <property name="java-output-path" value="/Tik_Tik1/build/classes"/>
             
-    </wb-module>
     
+    <wb-module deploy-name="Tik_Tik">
+                        
+        
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+                        
+        
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+                
+        <dependent-module archiveName="mysql-connector-j-8.3.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/tiger/Downloads/mysql-connector-j-8.3.0/mysql-connector-j-8.3.0/mysql-connector-j-8.3.0.jar">
+                        
+            <dependency-type>uses</dependency-type>
+                    
+        </dependent-module>
+                
+        <dependent-module archiveName="taglibs-standard-impl-1.2.5.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/tiger/Downloads/taglibs1.2.5_1609282a-793d-488b-917f-6ed7eb2752ed_170833_/taglibs-standard-impl-1.2.5.jar">
+                        
+            <dependency-type>uses</dependency-type>
+                    
+        </dependent-module>
+                
+        <dependent-module archiveName="taglibs-standard-spec-1.2.5.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/tiger/Downloads/taglibs1.2.5_1609282a-793d-488b-917f-6ed7eb2752ed_170833_/taglibs-standard-spec-1.2.5.jar">
+                        
+            <dependency-type>uses</dependency-type>
+                    
+        </dependent-module>
+                        
+        
+        <property name="java-output-path" value="/Tik_Tik/build/classes"/>
+        <property name="context-root" value="Tik_Tik"/>
+                    
+    
+    </wb-module>
+        
+
 </project-modules>
