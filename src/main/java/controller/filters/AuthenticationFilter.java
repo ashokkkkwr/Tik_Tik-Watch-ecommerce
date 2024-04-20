@@ -20,7 +20,6 @@ public class AuthenticationFilter implements Filter {
 
     @Override
     public void destroy() {
-        // Cleanup code, if any
     }
 
     @Override
@@ -46,7 +45,7 @@ public class AuthenticationFilter implements Filter {
        	 res.sendRedirect(req.getContextPath() + "/pages/admin.jsp");
             return;
        }
-        if (uri.endsWith("login.jsp") || uri.endsWith("signup.jsp") || uri.endsWith(".css")) {
+        if (uri.endsWith("login.jsp") || uri.endsWith("signup.jsp") || uri.endsWith(".css") || uri.endsWith(".png")) {
             chain.doFilter(req, res);
             return;
         }
