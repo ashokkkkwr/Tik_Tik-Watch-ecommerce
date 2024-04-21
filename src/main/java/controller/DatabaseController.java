@@ -133,6 +133,8 @@ public class DatabaseController {
             return null;
         }
     }
+    
+   //list all users 
     public List<UsersModel> getAllUsers() {
         List<UsersModel> users = new ArrayList<>();
         try (Connection con = getConnection()) {
@@ -149,7 +151,27 @@ public class DatabaseController {
             ex.printStackTrace(); // Log the exception for debugging
         }
         return users;
-    }    
+    }  
+    // list all products:
+    public List<ProductsModel> getAllProducts() {
+        List<ProductsModel> products = new ArrayList<>();
+        try (Connection con = getConnection()) {
+            PreparedStatement st = con.prepareStatement(ProductStringUtils.GET_ALL_PRODUCTS);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                ProductsModel product = new ProductsModel();
+                product.setProductName(rs.getString("prod_Name"));
+                product.setProductDescription(rs.getString("prod_Description"));
+                product.setProductAvailability(rs.getString("prod_Availability"));
+                product.setProductCategory(rs.getString("prod_Category"));
+                // Populate other fields as needed
+                products.add(product);
+            }
+        } catch (SQLException | ClassNotFoundException ex) {
+            ex.printStackTrace(); // Log the exception for debugging
+        }
+        return products;
+    } 
 
     public int addProduct(ProductsModel productModel) {
         try (Connection con = getConnection();
