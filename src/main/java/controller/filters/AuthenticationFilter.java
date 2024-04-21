@@ -40,12 +40,17 @@ public class AuthenticationFilter implements Filter {
         	 res.sendRedirect(req.getContextPath() + "/pages/admin.jsp");
              return;
         }
+        if(isAdmin && isAdminJ) {
+        	chain.doFilter(req, res);
+            return;
+        }
+        
         
         if(isLoggedIn && isAdminJ) {
        	 res.sendRedirect(req.getContextPath() + "/pages/admin.jsp");
             return;
        }
-        if (uri.endsWith("login.jsp") || uri.endsWith("signup.jsp") || uri.endsWith(".css") || uri.endsWith(".png")) {
+        if (uri.endsWith("login.jsp") || uri.endsWith("signup.jsp") || uri.endsWith(".css") || uri.endsWith(".png") ||uri.endsWith("UsersServlet") ||uri.endsWith("ProductsServlet")) {
             chain.doFilter(req, res);
             return;
         }

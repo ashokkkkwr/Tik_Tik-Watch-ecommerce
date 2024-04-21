@@ -32,5 +32,8 @@ public class ProductStringUtils {
 	public static final String LOGIN_SERVLET = "/LoginServlet";
 	public static final String USERS_SERVLET = "/UsersServlet";
 	public static final String PRODUCT_SERVLET = "/ProductServlet";
+	public static final String PRODUCTS_SERVLET = "/ProductsServlet";
+
+	
 
 }
