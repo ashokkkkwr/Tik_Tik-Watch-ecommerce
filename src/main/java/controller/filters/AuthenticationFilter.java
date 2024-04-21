@@ -51,7 +51,7 @@ public class AuthenticationFilter implements Filter {
         }
 
         // Redirect to login page if not logged in and trying to access restricted pages
-        if (!isLoggedIn && !(uri.endsWith("LoginServlet") || uri.endsWith("SignupServlet"))) {
+        if (!isLoggedIn && !(uri.endsWith("LoginServlet") || uri.endsWith("SignupServlet") || uri.endsWith("cart.jsp"))) {
             res.sendRedirect(req.getContextPath() + "/pages/login.jsp");
             return;
         }

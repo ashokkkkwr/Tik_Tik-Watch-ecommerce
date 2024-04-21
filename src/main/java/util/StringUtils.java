@@ -11,6 +11,15 @@ public class StringUtils {
 	public static final String GET_PHONE = "SELECT * FROM users WHERE phone=?";
 	public static final String GET_EMAIL = "SELECT * FROM users WHERE EMAIL=?";
 	public static final String GET_ALL_USERS = "SELECT * FROM users";
+	
+	//cart
+	 public static final String CHECK_CART = "SELECT * FROM cart WHERE user_id = ? AND product_id = ?";
+	    public static final String ADD_TO_CART = "INSERT INTO cart (quantity, prod_id, user_id) VALUES (?, ?, ?)";
+	    public static final String UPDATE_CART = "UPDATE cart SET quantity = ? WHERE user_id = ? AND prod_id = ?";
+	    public static final String REMOVE_FROM_CART = "DELETE FROM cart WHERE user_id = ? AND prod_id = ?";
+
+	
+	
 //storing in global variables
 	public static final String IS_ADMIN = "is_admin";
 	public static final String USERNAME = "userName";
