@@ -1,5 +1,3 @@
-<!-- cart.jsp -->
-
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -20,7 +18,8 @@
         <th>Action</th>
     </tr>
     <!-- Loop through cart items -->
-    <%-- <c:forEach var="cartItem" items="${cartItems}">
+    <%-- 
+    <c:forEach var="cartItem" items="${cartItems}">
         <tr>
             <td>${cartItem.productName}</td>
             <td>${cartItem.price}</td>
@@ -41,7 +40,8 @@
                 </form>
             </td>
         </tr>
-    </c:forEach> --%>
+    </c:forEach>
+     --%>
 </table>
 
 </body>

@@ -7,8 +7,8 @@
     <table class="table table-bordered">
         <thead class="thead-dark">
             <tr>
-                <th scope="col">Product Name</th>
-                <th scope="col">Product Description</th>
+                <th scope="col">Product </th>
+                <th scope="col">Location</th>
                 <th scope="col">Actions</th>
             </tr>
         </thead>

@@ -50,7 +50,7 @@ public class AuthenticationFilter implements Filter {
        	 res.sendRedirect(req.getContextPath() + "/pages/admin.jsp");
             return;
        }
-        if (uri.endsWith("login.jsp") || uri.endsWith("signup.jsp") || uri.endsWith(".css") || uri.endsWith(".png") ||uri.endsWith("UsersServlet") ||uri.endsWith("ProductsServlet")) {
+        if (uri.endsWith("login.jsp") || uri.endsWith("signup.jsp") || uri.endsWith(".css") || uri.endsWith(".png") ||uri.endsWith("UsersServlet") ||uri.endsWith("ProductsServlet") ||uri.endsWith("AddToCartServlet")) {
             chain.doFilter(req, res);
             return;
         }
