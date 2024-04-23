@@ -10,6 +10,7 @@ import java.util.List;
 
 import util.ProductStringUtils;
 import util.StringUtils;
+import model.CartModel;
 import model.PasswordEncryptionWithAes;
 import model.ProductsModel;
 import model.UsersModel;
@@ -207,6 +208,31 @@ public class DatabaseController {
         	return -1;
         }
     }
+ // add to cart:
+    public int addCart(CartModel cartModel) {
+        try (Connection con = getConnection();
+             PreparedStatement cart = con.prepareStatement(StringUtils.ADD_TO_CART)) {
+
+            // Insert the new product
+            cart.setString(1, cartModel.getQuantity());
+            cart.setString(2, cartModel.getProductId());
+            cart.setString(3, cartModel.getUserId());
+
+            // Execute the insert statement
+            int result = cart.executeUpdate();
+
+            // Check if the insertion was successful
+            return result > 0 ? 1 : 0;
+
+        } catch (SQLException | ClassNotFoundException ex) {
+            ex.printStackTrace(); // Log the exception for debugging
+            return -1; // Error occurred
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
+
     
 
     //add to cart feature:
