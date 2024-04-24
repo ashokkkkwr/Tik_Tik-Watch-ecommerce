@@ -68,6 +68,5 @@ public class AuthenticationFilter implements Filter {
 
     @Override
     public void init(FilterConfig arg0) throws ServletException {
-        // Initialization code, if any
     }
 }
