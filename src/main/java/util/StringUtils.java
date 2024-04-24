@@ -14,7 +14,8 @@ public class StringUtils {
 	
 	//cart
 	 public static final String CHECK_CART = "SELECT * FROM cart WHERE user_id = ? AND product_id = ?";
-	    public static final String ADD_TO_CART = "INSERT INTO cart (quantity, prod_id, user_id) VALUES (?, ?, ?)";
+	    public static final String ADD_TO_CART = "INSERT INTO carts (quantity, prod_id, user_id) VALUES (?, ?, ?)";
+	    public static final String GET_CART_ID = "SELECT * FROM carts WHERE cart_id=?";
 	    public static final String UPDATE_CART = "UPDATE cart SET quantity = ? WHERE user_id = ? AND prod_id = ?";
 	    public static final String REMOVE_FROM_CART = "DELETE FROM cart WHERE user_id = ? AND prod_id = ?";
 
@@ -28,6 +29,16 @@ public class StringUtils {
 	public static final String PHONE = "phone";
 	public static final String PASSWORD = "password";
 	public static final String RETYPE_PASSWORD = "retypePassword";
+	
+	
+	//cart golbal variables:
+	public static final String CART_ID = "card_id";
+
+	public static final String QUANTITY = "quantity";
+	public static final String PROD_ID = "prod_id";
+	public static final String USER_ID = "user_id";
+	
+	
 	//signup page messages 
 	public static final String SUCCESSFUL_SIGNUP_MESSAGE="Successful";
 	public static final String ERROR_SIGNUP_MESSAGE = "Invalid Credentials";
@@ -49,6 +60,8 @@ public class StringUtils {
 	public static final String ADMIN_PAGE ="/pages/admin.jsp";
 	//servlets Routes
 	public static final String SIGNUP_SERVLET="/SignupServlet";
+	public static final String CART_SERVLET="/CartServlet";
+
 	public static final String LOGIN_SERVLET = "/LoginServlet";
 	public static final String USERS_SERVLET = "/UsersServlet";
 	

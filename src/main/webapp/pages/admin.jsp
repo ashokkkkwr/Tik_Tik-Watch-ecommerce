@@ -38,7 +38,27 @@
         <button type="submit">Add Product</button>
     </form>
 
-    <jsp:include page="welcome.jsp"></jsp:include>
 
+
+
+
+    <form action="${pageContext.request.contextPath}/CartServlet" method="post">
+        <div>
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" required>
+        </div>
+        <div>
+            <label for="productId">Product Category:</label>
+            <input type="number" id="productId" name="prod_id" required>
+        </div>
+        <div>
+            <label for="userId">User Id:</label>
+            <input type="number" id="userId" name="user_id" required>
+        </div>
+      
+        <button type="submit">Add to cart</button>
+    </form>
+
+    <jsp:include page="welcome.jsp"></jsp:include>
 </body>
 </html>

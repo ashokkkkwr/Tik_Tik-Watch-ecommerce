@@ -10,6 +10,7 @@ import java.util.List;
 
 import util.ProductStringUtils;
 import util.StringUtils;
+import model.CartModel;
 import model.PasswordEncryptionWithAes;
 import model.ProductsModel;
 import model.UsersModel;
@@ -207,55 +208,81 @@ public class DatabaseController {
         	return -1;
         }
     }
-    
-    
-    //Cart functionality
-    public int addToCart(int userId, int productId, int quantity) {
+ // add to cart:
+    public int addCart(CartModel cartModel) {
         try (Connection con = getConnection();
              PreparedStatement cart = con.prepareStatement(StringUtils.ADD_TO_CART)) {
 
-            // Check if the product already exists in the cart for this user
-            PreparedStatement checkCart = con.prepareStatement(StringUtils.CHECK_CART);
-            checkCart.setInt(1, userId);
-            checkCart.setInt(2, productId);
-            ResultSet checkCartRs = checkCart.executeQuery();
+            // Insert the new product
+            cart.setString(1, cartModel.getQuantity());
+            cart.setString(2, cartModel.getProductId());
+            cart.setString(3, cartModel.getUserId());
 
-            if (checkCartRs.next()) {
-                // Update the quantity if the product already exists in the cart
-                int currentQuantity = checkCartRs.getInt("quantity");
-                quantity += currentQuantity;
-                PreparedStatement updateCart = con.prepareStatement(StringUtils.UPDATE_CART);
-                updateCart.setInt(1, quantity);
-                updateCart.setInt(2, userId);
-                updateCart.setInt(3, productId);
-                updateCart.executeUpdate();
-                return 1; // Product quantity updated in cart
-            } else {
-                // Insert the product into the cart if it doesn't exist
-                cart.setInt(1, userId);
-                cart.setInt(2, productId);
-                cart.setInt(3, quantity);
-                cart.executeUpdate();
-                return 2; // Product added to cart
-            }
+            // Execute the insert statement
+            int result = cart.executeUpdate();
+
+            // Check if the insertion was successful
+            return result > 0 ? 1 : 0;
+
         } catch (SQLException | ClassNotFoundException ex) {
             ex.printStackTrace(); // Log the exception for debugging
+            return -1; // Error occurred
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
+
+    
+
+    //add to cart feature:
+
+    public int addToCart(int userId, int productId, int quantity) {
+        try (Connection con = getConnection()) {
+            // Check if the product already exists in the user's cart
+            PreparedStatement checkCartStmt = con.prepareStatement("SELECT * FROM cart WHERE user_id = ? AND product_id = ?");
+            checkCartStmt.setInt(1, userId);
+            checkCartStmt.setInt(2, productId);
+            ResultSet rs = checkCartStmt.executeQuery();
+            if (rs.next()) {
+                // Product already exists, update quantity
+                int existingQuantity = rs.getInt("quantity");
+                int newQuantity = existingQuantity + quantity;
+                PreparedStatement updateCartStmt = con.prepareStatement("UPDATE cart SET quantity = ? WHERE user_id = ? AND product_id = ?");
+                updateCartStmt.setInt(1, newQuantity);
+                updateCartStmt.setInt(2, userId);
+                updateCartStmt.setInt(3, productId);
+                updateCartStmt.executeUpdate();
+                return 1; // Success
+            } else {
+                // Product not in cart, add new entry
+                PreparedStatement addToCartStmt = con.prepareStatement("INSERT INTO cart (quantity, product_id, user_id) VALUES (?, ?, ?)");
+                addToCartStmt.setInt(1, quantity);
+                addToCartStmt.setInt(2, productId);
+                addToCartStmt.setInt(3, userId);
+                addToCartStmt.executeUpdate();
+                return 1; // Success
+            }
+
+        } catch (SQLException | ClassNotFoundException ex) {
+            ex.printStackTrace();
             return -1; // Error occurred
         }
     }
 
     public int removeFromCart(int userId, int productId) {
-        try (Connection con = getConnection();
-             PreparedStatement removeItem = con.prepareStatement(StringUtils.REMOVE_FROM_CART)) {
-            removeItem.setInt(1, userId);
-            removeItem.setInt(2, productId);
-            int result = removeItem.executeUpdate();
-            return result > 0 ? 1 : 0;
+        try (Connection con = getConnection()) {
+            PreparedStatement removeFromCartStmt = con.prepareStatement("DELETE FROM cart WHERE user_id = ? AND product_id = ?");
+            removeFromCartStmt.setInt(1, userId);
+            removeFromCartStmt.setInt(2, productId);
+            int rowsAffected = removeFromCartStmt.executeUpdate();
+            return rowsAffected > 0 ? 1 : 0; // Success if at least one row was deleted
         } catch (SQLException | ClassNotFoundException ex) {
-            ex.printStackTrace(); // Log the exception for debugging
+            ex.printStackTrace();
             return -1; // Error occurred
         }
     }
-
-
 }
+
+
+
