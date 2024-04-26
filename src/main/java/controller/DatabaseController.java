@@ -60,7 +60,7 @@ public class DatabaseController {
             st.setString(3, userModel.getLocation());
             st.setString(4, userModel.getPhone());
             st.setString(5, encryptedPassword);
-
+            st.setString(6, userModel.getImageUrlFromPart());
             int result = st.executeUpdate();
             return result > 0 ? 1 : 0;
         } catch (SQLException | ClassNotFoundException ex) {
@@ -80,9 +80,9 @@ public class DatabaseController {
                 String userDb = rs.getString("email");
                 String encryptedPassword = rs.getString("password");
                 String admin = rs.getString("is_Admin");
-                System.out.println("email from DB: " + userDb);
-                System.out.println("Encrypted Password from DB: " + encryptedPassword);
-                System.out.println("is admin is"+admin);
+//                System.out.println("email from DB: " + userDb);
+//                System.out.println("Encrypted Password from DB: " + encryptedPassword);
+//                System.out.println("is admin is"+admin);
                 // Decrypt password from database and compare
                 String decryptedPassword = PasswordEncryptionWithAes.decryptPassword(encryptedPassword, "U3CdwubLD5yQbUOG92ZnHw==");
                 System.out.println("Decrypted Password: " + decryptedPassword);
@@ -145,6 +145,7 @@ public class DatabaseController {
                 UsersModel user = new UsersModel();
                 user.setEmail(rs.getString("email"));
                 user.setLocation(rs.getString("location"));
+                user.setImageUrlFromString(rs.getString("profile_Img"));
                 // Populate other fields as needed
                 users.add(user);
             }

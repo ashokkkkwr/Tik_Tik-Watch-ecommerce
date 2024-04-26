@@ -1,11 +1,13 @@
 package util;
 
+import java.io.File;
+
 public class StringUtils {
 	
 	//Queries
 	public static final String SIGNUP ="INSERT INTO users "
-			+"(userName,email,location,phone,password)"
-			+"VALUES(?,?,?,?,?)";
+			+"(userName,email,location,phone,password,profile_Img)"
+			+"VALUES(?,?,?,?,?,?)";
 	public static final String GET_LOGIN_INFO = "SELECT * FROM users WHERE email = ?";
 	public static final String GET_USERNAME = "SELECT * FROM users WHERE userName=?";
 	public static final String GET_PHONE = "SELECT * FROM users WHERE phone=?";
@@ -65,4 +67,7 @@ public class StringUtils {
 	public static final String LOGIN_SERVLET = "/LoginServlet";
 	public static final String USERS_SERVLET = "/UsersServlet";
 	
+	
+	public static final String IMG_DIR = "Users\\tiger\\eclipse-test\\Tik_Tik\\src\\main\\webapp\\images\\";
+	public static final String IMG_DIR_SAVE_PATH = "C:"+File.separator+IMG_DIR;
 }

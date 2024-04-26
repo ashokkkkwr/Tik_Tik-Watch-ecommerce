@@ -27,7 +27,7 @@
         %>
         
         
-<form action="${pageContext.request.contextPath}/SignupServlet" method="post">
+<form action="${pageContext.request.contextPath}/SignupServlet" method="post" enctype="multipart/form-data">
 <label>UserName:</label>
 <input type="text" id="userName" name="userName" required>
 <label>Email:</label>
@@ -40,6 +40,7 @@
 <input type="text" id="password" name="password" required>
 <label>Retype Password:</label>
 <input type="text" id="retypePassword" name="retypePassword" required>
+<label for="image">Profile Picture</label> <input type="file" id="image" name="image">
 <button type="submit">Sign up</button>
 </form>
 

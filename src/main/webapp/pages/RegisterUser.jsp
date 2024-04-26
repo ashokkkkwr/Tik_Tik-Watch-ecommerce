@@ -21,6 +21,7 @@
             <tr>
                 <td><%= user.getEmail() %></td>
                 <td><%= user.getLocation() %></td>
+                <td><img src="../images/<%=user.getImageUrlFromPart()%>"alt="Img">
                 <td>
                     <a href="#" class="btn btn-primary btn-sm mr-2" role="button"><i class="fas fa-edit"></i> Edit</a>
                     <a href="#" class="btn btn-danger btn-sm" role="button"><i class="fas fa-trash-alt"></i> Delete</a>

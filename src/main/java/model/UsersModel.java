@@ -1,5 +1,9 @@
 package model;
 
+import java.io.File;
+
+import javax.servlet.http.Part;
+
 public class UsersModel {
 	private String userName;
 	private String email;
@@ -7,8 +11,10 @@ public class UsersModel {
 	private String phone;
 	private String password;
 	private String isAdmin;
+	private String imageUrlFromPart;
+
 	
-	public UsersModel(String userName, String email, String location, String phone, String password, String isAdmin) {
+	public UsersModel(String userName, String email, String location, String phone, String password, String isAdmin,Part imagePart) {
 		super();
 		this.userName = userName;
 		this.email = email;
@@ -16,6 +22,7 @@ public class UsersModel {
 		this.phone = phone;
 		this.password = password;
 		this.isAdmin = isAdmin;
+		this.imageUrlFromPart=getImageUrl(imagePart);
 	}
 	public UsersModel() {
 		
@@ -56,6 +63,37 @@ public class UsersModel {
 	public void setIsAdmin(String isAdmin) {
 		this.isAdmin = isAdmin;
 	}
+
+	public String getImageUrl(Part image) {
+		String savePath = "/home/arch/eclipse-test/ecommerce/src/main/webapp/images";
+		File files = new File(savePath);
+		String getImgPart = null;
+		if(!files.exists()) {
+		files.mkdir();} 
+		String contDisp = image.getHeader("content-disposition");
+		String item[] = contDisp.split(";");
+		for(String i : item) {
+			if(i.trim().startsWith("filename")) {
+			getImgPart = i.substring(i.indexOf("=")+2,i.length()-1);
+			}
+		}
+		if(getImgPart==null || getImgPart.isEmpty()) {
+			getImgPart="default.png";
+		}
+		return getImgPart;
+	}
+
+	public String getImageUrlFromPart() {
+		return imageUrlFromPart;
+	}
+
+	public void setImageFromPart(Part part) {
+		this.imageUrlFromPart = getImageUrl(part);
+	}
+	 public void setImageUrlFromString(String imageUrl) {
+	        this.imageUrlFromPart = imageUrl;
+	    }
+	
 	
 	
 }
