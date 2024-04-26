@@ -13,6 +13,8 @@ public class StringUtils {
 	public static final String GET_PHONE = "SELECT * FROM users WHERE phone=?";
 	public static final String GET_EMAIL = "SELECT * FROM users WHERE EMAIL=?";
 	public static final String GET_ALL_USERS = "SELECT * FROM users";
+	public static final String GET_IMAGE = "SELECT profile_Img FROM users";
+
 	
 	//cart
 	 public static final String CHECK_CART = "SELECT * FROM cart WHERE user_id = ? AND product_id = ?";
@@ -31,6 +33,7 @@ public class StringUtils {
 	public static final String PHONE = "phone";
 	public static final String PASSWORD = "password";
 	public static final String RETYPE_PASSWORD = "retypePassword";
+	public static final String PROFILE_IMAGE = "profile_Img";
 	
 	
 	//cart golbal variables:

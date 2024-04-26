@@ -87,8 +87,8 @@ public class UsersModel {
 		return imageUrlFromPart;
 	}
 
-	public void setImageFromPart(Part part) {
-		this.imageUrlFromPart = getImageUrl(part);
+	public void setImageFromPart(Part image) {
+		this.imageUrlFromPart = getImageUrl(image);
 	}
 	 public void setImageUrlFromString(String imageUrl) {
 	        this.imageUrlFromPart = imageUrl;

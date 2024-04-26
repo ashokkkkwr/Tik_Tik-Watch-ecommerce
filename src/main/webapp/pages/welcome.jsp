@@ -8,8 +8,8 @@
 		
 		if(cookies!=null) {
 			for (Cookie cookie: cookies) {
-				if (cookie.getName().equals("email")) cookieUsername = cookie.getValue();
-				if (cookie.getName().equals("JSESSIONID")) cookieSessionID = cookie.getValue();
+				if (cookie.getName().equals("adminemail")) cookieUsername = cookie.getValue();
+				
 			}
 		}
 	%>
