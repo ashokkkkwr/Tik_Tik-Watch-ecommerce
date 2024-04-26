@@ -30,7 +30,7 @@ html {
 }
 
 body {
-    background-color: black;
+    
 }
 
 
@@ -165,100 +165,84 @@ span {
 
 
 /* Singup Form Starts */
-
-
-
-.container {
-    position: relative;
-    border-radius: 20px;
+.container{
+    border-radius:20px;
     padding-top: 5px;
-    background-color: rgb(158, 133, 133);
-    height: 600px;
-    width: 1000px;
-
+    background-color: rgb(217, 192, 192);
+    height: 700px; 
+    width: 1000px; 
     margin: 100px 200px;
-    background-image: url("./images/image.png");
-     /* position: relative; */
-     background-size: 100%;
-     background-position: center; 
-     /* opacity: 0.6; */
-     overflow: hidden;
+    background-image: url("image.png");
+    /* position: relative; */
+    background-size: 100%;
+    background-position: left; 
+    /* opacity: 0.6; */
+    overflow: hidden;
 
-    
-    
-  
 
+   
 }
 
-.signin-box {
-    /* position: relative */
-    position: absolute;
-    top: 50%; /* Adjust this value to move the form down */
-    left: 79%;
-    transform: translate(-50%, -50%);
-    width: 350px;
-    height: 400px;
+.signup-box{
+
+    width: 360px;
+    height: 630px;
     margin: auto;
     background-color: white;
     border-radius: 25px;
     text-align: center;
-    margin-right: 35px;
-
-
-
-    
+    margin-left: 35px;
+    margin: 2rem;
 }
-
-h1 {
+h1{
+    font-size: 30px;
     text-align: center;
     padding-top: 10px;
 }
 
-form {
+form{
     width: 240px;
     margin-left: 60px;
 }
-
-form label {
+form label{
     display: flex;
-    margin-top: 20px;
-    margin-bottom: 12px;
+    margin-top: 9px;
+    margin-bottom: 9px;
     font-size: 16px;
     margin-left: 10px;
     color: rgb(116, 112, 112);
+    
 
 }
-
-form input {
+form input{
     width: 250px;
     height: 35px;
     padding: 9px;
     border: none;
-
     border-radius: 6px;
     outline: none;
     background-color: rgb(232, 231, 231);
 
-
+   
 }
-
-p {
-    margin-top: 35px;
+p{
+    margin-top: 15px;
     text-align: center;
     font-size: 15px;
     color: rgb(91, 91, 230);
+    margin-bottom: 19px;
 
+  
 }
-
-p a {
+p a{
     color: rgb(91, 91, 230);
     text-decoration: none;
 }
-
-input[type="submit"] {
+input[type="submit"]{
     width: 150px;
     height: 40px;
-    margin-top: 12px;
+    margin:0 auto;
+    text-align: center;
     border: none;
     background-color: orange;
     color: white;
@@ -277,15 +261,31 @@ input[type="submit"] {
 
 }
 
-input[type="submit"]:hover,
-input[type="submit"]:focus,
-input[type="submit"]:active {
+input[type="submit"]:hover, input[type="submit"]:focus, input[type="submit"]:active{
 
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     -webkit-transform: scale(1.1);
-    transform: scale(1.1);
+    transform:scale(1.1);
     color: blue;
 
+}
+.input-control input:focus{
+
+    outline: 0;
+}
+
+.input-control.success input{
+    border-color: #09c372;
+}
+
+.input-control.error input{
+    border-color: #ff3860;
+}
+.input-control.error{
+
+    color: #ff3860;
+    font-size: 9px;
+    height: 13px;
 }
 
 
