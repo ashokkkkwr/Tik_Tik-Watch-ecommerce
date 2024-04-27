@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;1,300&display=swap');
+
+
+:root {
+
+    --orange: rgb(232, 170, 56);
+    --white: #fff;
+    --light-color: #666;
+    --box-shadow: 0 .1rem 1rem rgba(0, 0, 0.1);
+    --border: 2rem solid rgba(0, 0, 0.1);
+    --outline: .1rem solid rgba(0, 0, 0.1);
+}
+
+* {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    transition: all .2s linear;
+}
+
+html {
+    font-size: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    scroll-padding-top: 7rem;
+}
+
+body {
+    background-color: black;
+    
+}
+
+
+/* Header Starts */
+
+.header {
+    border: 0px solid;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    padding: 2rem 9%;
+    justify-content: space-between;
+    background: black;
+    z-index: 1000;
+
+
+    /* box-shadow: var(--box-shadow); */
+
+
+}
+
+.header .logo {
+    font-size: 2.5em;
+    font-weight: bolder;
+    /* color: var(--orange); */
+    color: var(--white);
+
+}
+
+.header .navbar a {
+    font-size: 1.2rem;
+    margin: 0 4rem;
+    color: var(--white);
+ 
+}
+
+.header .navbar a:hover {
+    color: var(--orange);
+ 
+
+
+}
+
+
+.header .icons div {
+    border: 0px solid;
+    color: #fff;
+    height: 2.5rem;
+    width: 2.5rem;
+    line-height: 2.5rem;
+    border-radius: 2.5rem;
+    background: #eee;
+    color: var(--light-color);
+    font-size: 1.2rem;
+    margin-right: 3rem;
+    text-align: center;
+
+    
+
+}
+
+
+.header .icons div:hover {
+    color: var(--white);
+    background: var(--orange);
+
+}
+
+
+
+
+.icons .menu-items li {
+
+    list-style: none;
+}
+
+.icons .menu-items li a {
+    text-decoration: none;
+    color: var(--light-color);
+}
+
+.icons .menu-items {
+    position: absolute;
+    top:85px;
+  /*  top: calc(100% + 0px); Adjust the distance from the header */
+    right: 50px;
+    padding: 10px 20px;
+    background: #fff;
+    width: 131px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: 0.5s;
+    visibility: hidden;
+    opacity: 0;
+}
+
+
+.icons .menu-items.active {
+    visibility: visible;
+    opacity: 1;
+
+}
+
+.icons .menu-items li a:hover {
+    color: black;
+    background-color: #dfd8d8;
+    transition: all ease .3s;
+    visibility: visible;
+    opacity: 1; 
+
+}
+.menu-items {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .menu-items li {
+            list-style: none;
+            margin-bottom: 10px;
+        }
+        .navbar a.active {
+            color: blue; /* Change color or add any other styling for active link */
+            font-weight: bold; /* Example: make the font bold */
+        }
+
+
+h1 {
+    color: var(--white);
+    font-size: 4rem;
+    font-weight: 450;
+    margin-left: 20px;
+
+
+
+}
+
+
+p {
+    color: var(--white);
+    line-height: 1.6;
+    /* font-weight: 1.7rem; */
+    font-size: 1.1rem;
+    margin-left: 16px;
+    margin-bottom: 30px;
+
+}
+
+span {
+    color: orange;
+    /* margin: 1rem; */
+
+
+}
+/* Add your styles here */
+
+/* Add your styles here */
+
+
+
+
+
+
+
+
+
+/* Header Ends */

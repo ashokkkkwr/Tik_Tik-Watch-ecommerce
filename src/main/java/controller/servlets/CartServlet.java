@@ -21,13 +21,12 @@ public class CartServlet extends HttpServlet {
     public CartServlet() {
         super();
     }
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter printOut = response.getWriter();
         response.setContentType("text/html");
         printOut.print("Hello World");
     }
-
+    
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         PrintWriter printOut = response.getWriter();

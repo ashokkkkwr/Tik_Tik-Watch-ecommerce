@@ -60,7 +60,7 @@ public class DatabaseController {
             st.setString(3, userModel.getLocation());
             st.setString(4, userModel.getPhone());
             st.setString(5, encryptedPassword);
-
+            st.setString(6, userModel.getImageUrlFromPart());
             int result = st.executeUpdate();
             return result > 0 ? 1 : 0;
         } catch (SQLException | ClassNotFoundException ex) {
@@ -80,9 +80,9 @@ public class DatabaseController {
                 String userDb = rs.getString("email");
                 String encryptedPassword = rs.getString("password");
                 String admin = rs.getString("is_Admin");
-                System.out.println("email from DB: " + userDb);
-                System.out.println("Encrypted Password from DB: " + encryptedPassword);
-                System.out.println("is admin is"+admin);
+//                System.out.println("email from DB: " + userDb);
+//                System.out.println("Encrypted Password from DB: " + encryptedPassword);
+//                System.out.println("is admin is"+admin);
                 // Decrypt password from database and compare
                 String decryptedPassword = PasswordEncryptionWithAes.decryptPassword(encryptedPassword, "U3CdwubLD5yQbUOG92ZnHw==");
                 System.out.println("Decrypted Password: " + decryptedPassword);
@@ -145,6 +145,7 @@ public class DatabaseController {
                 UsersModel user = new UsersModel();
                 user.setEmail(rs.getString("email"));
                 user.setLocation(rs.getString("location"));
+                user.setImageUrlFromString(rs.getString("profile_Img"));
                 // Populate other fields as needed
                 users.add(user);
             }
@@ -163,8 +164,20 @@ public class DatabaseController {
                 ProductsModel product = new ProductsModel();
                 product.setProductName(rs.getString("prod_Name"));
                 product.setProductDescription(rs.getString("prod_Description"));
-                product.setProductAvailability(rs.getString("prod_Availability"));
                 product.setProductCategory(rs.getString("prod_Category"));
+                product.setProductPrice(rs.getString("prod_price"));
+
+                product.setProductAvailability(rs.getString("prod_Availability"));
+                product.setProductModels(rs.getString("prod_model"));
+                product.setProductSize(rs.getString("prod_size"));
+                product.setProductColor(rs.getString("prod_color"));
+                product.setProductDialShape(rs.getString("prod_dial_shape"));
+                product.setProductCompatibleOs(rs.getString("prod_compatible_os"));
+                
+                
+
+
+
                 // Populate other fields as needed
                 products.add(product);
             }
@@ -193,6 +206,13 @@ public class DatabaseController {
             product.setString(3, productModel.getProductCategory());
             product.setString(4, productModel.getProductPrice());
             product.setString(5, productModel.getProductAvailability());
+            product.setString(6, productModel.getProductModels());
+            product.setString(7, productModel.getProductSize());
+            product.setString(8, productModel.getProductColor());
+            product.setString(9, productModel.getProductDialShape());
+            product.setString(10, productModel.getProductCompatibleOs());
+         
+           
 
             // Execute the insert statement
             int result = product.executeUpdate();

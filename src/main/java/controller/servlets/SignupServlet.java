@@ -6,15 +6,24 @@ import java.io.PrintWriter;
 
 import util.StringUtils;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import controller.DatabaseController;
 import model.UsersModel;
 
+
+
 @WebServlet(asyncSupported = true, urlPatterns = {StringUtils.SIGNUP_SERVLET})
+
+@MultipartConfig(fileSizeThreshold=1024*1024*10, 	// 10 MB 
+maxFileSize=1024*1024*50,      	// 50 MB
+maxRequestSize=1024*1024*100)
+
 public class SignupServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     DatabaseController dbController = new DatabaseController();
@@ -40,9 +49,14 @@ public class SignupServlet extends HttpServlet {
         String password = request.getParameter(StringUtils.PASSWORD);
         String isAdmin = request.getParameter(StringUtils.IS_ADMIN);
         String retypePassword = request.getParameter(StringUtils.RETYPE_PASSWORD);
+        Part imagePart = request.getPart("image");
 
         if (password.equals(retypePassword)) {
-            UsersModel userModel = new UsersModel(userName, email, location, phone, password, isAdmin);
+            UsersModel userModel = new UsersModel(userName, email, location, phone, password, isAdmin,imagePart);
+            String savePath = StringUtils.IMG_DIR_SAVE_PATH;
+            String fileName= userModel.getImageUrlFromPart();
+            if(!fileName.isEmpty() && fileName !=null)
+            	imagePart.write(savePath + fileName);
             int result = dbController.addUser(userModel);
 
             switch (result) {

@@ -4,38 +4,42 @@
 
 <div class="container mt-5">
     <h1 class="mb-4">Registered Users</h1>
-    <table class="table table-bordered">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">Email</th>
-                <th scope="col">Location</th>
-                <th scope="col">Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% 
-            List<UsersModel> users = (List<UsersModel>) request.getAttribute("users");
-            if (users != null && !users.isEmpty()) {
-                for (UsersModel user : users) {
-            %>
-            <tr>
-                <td><%= user.getEmail() %></td>
-                <td><%= user.getLocation() %></td>
-                <td>
-                    <a href="#" class="btn btn-primary btn-sm mr-2" role="button"><i class="fas fa-edit"></i> Edit</a>
-                    <a href="#" class="btn btn-danger btn-sm" role="button"><i class="fas fa-trash-alt"></i> Delete</a>
-                </td>
-            </tr>
-            <% 
-                }
-            } else { 
-            %>
-            <tr>
-                <td colspan="3">No users found</td>
-            </tr>
-            <% 
-            } 
-            %>
-        </tbody>
-    </table>
+
+    <div class="row">
+        <%
+        List<UsersModel> users = (List<UsersModel>) request.getAttribute("users");
+        if (users != null && !users.isEmpty()) {
+            for (UsersModel user : users) {
+        %>
+
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <img class="card-img-top img-fluid" style="max-width: 100px; height: auto;"
+                     src="${pageContext.request.contextPath}/images/<%= user.getImageUrlFromPart() %>" alt="User Image">
+                <div class="card-body">
+                    <h5 class="card-title"><%= user.getEmail() %></h5>
+                    <p class="card-text"><i class="fas fa-map-marker-alt"></i> <%= user.getLocation() %></p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <a href="#" class="btn btn-sm btn-primary" role="button"><i class="fas fa-edit"></i> Edit</a>
+                        <a href="#" class="btn btn-sm btn-danger" role="button"><i class="fas fa-trash-alt"></i> Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <%
+            }
+        } else {
+        %>
+
+        <div class="col-md-12">
+            <div class="alert alert-secondary" role="alert">
+                No users found
+            </div>
+        </div>
+
+        <%
+        }
+        %>
+    </div>
 </div>
