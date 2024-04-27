@@ -10,7 +10,7 @@
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Code for font awesome cdn -->
-    <link rel="stylesheet" href="header.css">
+  
     <!-- Code for linking css file -->
 
     <!-- code for boxicons  -->
@@ -20,6 +20,9 @@
 
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/pages/styles/admin.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/pages/styles/header.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/pages/styles/allProducts.css">
+
 
 </head>
 <body>

@@ -46,19 +46,22 @@ public class ProductServlet extends HttpServlet {
 		String productCategory = request.getParameter(ProductStringUtils.PRODUCT_CATEGORY);
 		String productPrice = request.getParameter(ProductStringUtils.PRODUCT_PRICE);
 		String productAvailability = request.getParameter(ProductStringUtils.PRODUCT_AVAILABILITY);
+		String productModels = request.getParameter(ProductStringUtils.PRODUCT_MODEL);
+		String productSize = request.getParameter(ProductStringUtils.PRODUCT_SIZE);
+		String productColor = request.getParameter(ProductStringUtils.PRODUCT_COLOR);
+		String productDialShape = request.getParameter(ProductStringUtils.PRODUCT_DIAL_SHAPE);
+		String productCompatibleOs = request.getParameter(ProductStringUtils.PRODUCT_COMPATIBLE_OS);
 
 		
 
  
         
-		ProductsModel productModel = new ProductsModel(productName, productDescription, productCategory, productPrice, productAvailability);
+		ProductsModel productModel = new ProductsModel(productName,productDescription,productCategory,productPrice,productAvailability,productModels,productSize,productColor,productDialShape,productCompatibleOs);
 		
 		int result = dbController.addProduct(productModel);
 		System.out.println(result);
 		
 
-
-	
 			switch (result) {
 				case 1 -> {
 					request.setAttribute(ProductStringUtils.SUCCESS_MESSAGE, ProductStringUtils.SUCCESSFUL_PRODUCT_ADDED_MESSAGE);

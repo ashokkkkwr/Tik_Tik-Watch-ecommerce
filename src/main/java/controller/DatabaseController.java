@@ -164,8 +164,20 @@ public class DatabaseController {
                 ProductsModel product = new ProductsModel();
                 product.setProductName(rs.getString("prod_Name"));
                 product.setProductDescription(rs.getString("prod_Description"));
-                product.setProductAvailability(rs.getString("prod_Availability"));
                 product.setProductCategory(rs.getString("prod_Category"));
+                product.setProductPrice(rs.getString("prod_price"));
+
+                product.setProductAvailability(rs.getString("prod_Availability"));
+                product.setProductModels(rs.getString("prod_model"));
+                product.setProductSize(rs.getString("prod_size"));
+                product.setProductColor(rs.getString("prod_color"));
+                product.setProductDialShape(rs.getString("prod_dial_shape"));
+                product.setProductCompatibleOs(rs.getString("prod_compatible_os"));
+                
+                
+
+
+
                 // Populate other fields as needed
                 products.add(product);
             }
@@ -194,6 +206,13 @@ public class DatabaseController {
             product.setString(3, productModel.getProductCategory());
             product.setString(4, productModel.getProductPrice());
             product.setString(5, productModel.getProductAvailability());
+            product.setString(6, productModel.getProductModels());
+            product.setString(7, productModel.getProductSize());
+            product.setString(8, productModel.getProductColor());
+            product.setString(9, productModel.getProductDialShape());
+            product.setString(10, productModel.getProductCompatibleOs());
+         
+           
 
             // Execute the insert statement
             int result = product.executeUpdate();

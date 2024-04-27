@@ -7,8 +7,16 @@
     <table class="table table-bordered">
         <thead class="thead-dark">
             <tr>
-                <th scope="col">Product </th>
-                <th scope="col">Location</th>
+                <th scope="col">Product Name </th>
+                <th scope="col">product Description</th>
+                <th scope="col">product Category</th>
+                <th scope="col">product Price</th>
+                <th scope="col">product Availability</th>
+                <th scope="col">product model</th>
+                <th scope="col">product size</th>
+                <th scope="col">product color</th>
+                <th scope="col">product dial shape</th>
+                <th scope="col">product Compatible os</th>
                 <th scope="col">Actions</th>
             </tr>
         </thead>
@@ -21,10 +29,18 @@
             <tr>
                 <td><%= product.getProductName() %></td>
                 <td><%= product.getProductDescription() %></td>
+                <td><%= product.getProductCategory() %></td>
+                <td><%= product.getProductPrice() %></td>
+                <td><%= product.getProductAvailability() %></td>
+                <td><%= product.getProductModels() %></td>
+                <td><%= product.getProductSize() %></td>
+                <td><%= product.getProductColor() %></td>
+                <td><%= product.getProductDialShape() %></td>
+                <td><%= product.getProductCompatibleOs() %></td>
                 <td>
-                    <a href="#" class="btn btn-primary btn-sm mr-2" role="button"><i class="fas fa-edit"></i> Edit</a>
-                    <a href="#" class="btn btn-danger btn-sm" role="button"><i class="fas fa-trash-alt"></i> Delete</a>
-                </td>
+          <button class="edit-btn">Edit</button>
+          <button class="delete-btn">Delete</button>
+        </td>
             </tr>
             <% 
                 }

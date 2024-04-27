@@ -10,16 +10,17 @@
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Code for font awesome cdn -->
-    <link rel="stylesheet" href="header.css">
-    <!-- Code for linking css file -->
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/pages/styles/header.css">
 
-    <!-- code for boxicons  -->
+   
+
+   
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-    <!-- code for boxicons  -->
+   
 
     <!-- CSS for the View Products page -->
-    <link rel="stylesheet" href="style.css">
-    <!-- CSS for the View Products page -->
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/pages/styles/addProduct.css">
+    
 </head>
 
 <body>
@@ -29,30 +30,53 @@
 <section class="add-product">
 <h2>Add new Product</h2>
  <form action="${pageContext.request.contextPath}/ProductServlet" method="post">
-        <div>
+        <div class="input-group">
             <label for="productName">Product Name:</label>
             <input type="text" id="productName" name="prod_name" required>
         </div>
-        <div>
+       <div class="input-group">
             <label for="productDescription">Product Description:</label>
             <input type="text" id="productDescription" name="prod_description" required>
         </div>
-        <div>
+        <div class="input-group">
             <label for="productCategory">Product Category:</label>
             <input type="text" id="productCategory" name="prod_category" required>
         </div>
-        <div>
+        <div class="input-group">
             <label for="productPrice">Product Price:</label>
             <input type="number" id="productPrice" name="prod_price" required>
         </div>
-        <div>
+        <div class="input-group">
             <label for="productAvailability">Product Availability:</label>
             <input type="text" id="productAvailability" name="prod_availability" required>
         </div>
-        <button type="submit">Add Product</button>
+         <div class="input-group">
+            <label for="productModel">Product Model:</label>
+            <input type="text" id="productModel" name="prod_model" required>
+        </div>
+        <div class="input-group">
+            <label for="productSize">Product size:</label>
+            <input type="text" id="productSize" name="prod_size" required>
+        </div>
+        <div class="input-group">
+            <label for="productColor">Product Color:</label>
+            <input type="text" id="productColor" name="prod_color" required>
+        </div>
+        <div class="input-group">
+            <label for="productDialShape">Product Dial Shape:</label>
+            <input type="text" id="productDialShape" name="prod_dial_shape" required>
+        </div>
+         <div class="input-group">
+            <label for="productCompatibleOs">Product Compatible Os:</label>
+            <input type="text" id="productCompatibleOs" name="prod_compatible_os" required>
+        </div>    
+        <div class="input-group">
+        <button type="submit" class="add-btn">Add Product</button>
+        r</div>
+    
     </form>
+    
 
-   
 </section>
 </main>
 
