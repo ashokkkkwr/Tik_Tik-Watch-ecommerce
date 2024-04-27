@@ -5,47 +5,46 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+  <!-- Code for font awesome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Code for font awesome cdn -->
+    <link rel="stylesheet" href="header.css">
+    <!-- Code for linking css file -->
+
+    <!-- code for boxicons  -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <!-- code for boxicons  -->
+
+
+
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/pages/styles/admin.css">
+
 </head>
 <body>
   <jsp:include page="adminHeader.jsp"></jsp:include>  
 
--
+
+ <main>
+        <div class="container">
+            <h2>Welcome, Admin!</h2>
+                        <p class="message">Items can be added or deleted by the admin.</p>
+            
+<form action="${pageContext.request.contextPath}/LogoutServlet" method="post">
+						<button type="submit" class="logout-btn">
+							Log Out
+						</button>
+					</form>
+					</div>
+					</main>
 
 
 
-
-    <form action="${pageContext.request.contextPath}/ProductServlet" method="post">
-        <div>
-            <label for="productName">Product Name:</label>
-            <input type="text" id="productName" name="prod_name" required>
-        </div>
-        <div>
-            <label for="productDescription">Product Description:</label>
-            <input type="text" id="productDescription" name="prod_description" required>
-        </div>
-        <div>
-            <label for="productCategory">Product Category:</label>
-            <input type="text" id="productCategory" name="prod_category" required>
-        </div>
-        <div>
-            <label for="productPrice">Product Price:</label>
-            <input type="number" id="productPrice" name="prod_price" required>
-        </div>
-        <div>
-            <label for="productAvailability">Product Availability:</label>
-            <input type="text" id="productAvailability" name="prod_availability" required>
-        </div>
-        <button type="submit">Add Product</button>
-    </form>
-
-
-
-
-
-    <form action="${pageContext.request.contextPath}/CartServlet" method="post">
-        <div>
-            <label for="quantity">Quantity:</label>
-            <input type="number" id="quantity" name="quantity" required>
+<!--     <form action="${pageContext.request.contextPath}/CartServlet" method="post">
+      <div>
+    <label for="quantity">Quantity:</label>
+          <input type="number" id="quantity" name="quantity" required>
         </div>
         <div>
             <label for="productId">Product Category:</label>
@@ -58,7 +57,9 @@
       
         <button type="submit">Add to cart</button>
     </form>
+    --> 
+    
+   
 
-    <jsp:include page="welcome.jsp"></jsp:include>
 </body>
 </html>
