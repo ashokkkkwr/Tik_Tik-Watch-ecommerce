@@ -6,13 +6,12 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/pages/styles/allProducts.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/pages/styles/header.css">
 
 </head>
 <body>
     <jsp:include page="userHeader.jsp"></jsp:include>  
 
--
+
 
 
 
