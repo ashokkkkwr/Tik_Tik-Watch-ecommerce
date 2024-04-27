@@ -77,7 +77,7 @@ public class ProductServlet extends HttpServlet {
 				}
 				case -2 -> {
 					request.setAttribute(ProductStringUtils.ERROR_MESSAGE, ProductStringUtils.PRODUCT_ERROR_MESSAGE);
-				    request.getRequestDispatcher(ProductStringUtils.HOME_PAGE).forward(request, response);
+				    request.getRequestDispatcher(ProductStringUtils.ADD_PRODUCT).forward(request, response);
 				}
 				
 				default -> {

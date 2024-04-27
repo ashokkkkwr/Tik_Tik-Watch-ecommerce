@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ page import="util.StringUtils" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -72,9 +75,29 @@
         </div>    
         <div class="input-group">
         <button type="submit" class="add-btn">Add Product</button>
-        r</div>
+        </div>
     
     </form>
+     <% 
+        String successMessage = (String) request.getAttribute(StringUtils.SUCCESS_MESSAGE);
+        String errorMessage = (String) request.getAttribute(StringUtils.ERROR_MESSAGE);
+
+        if (errorMessage != null && !errorMessage.isEmpty()) {
+        %>
+        <!-- Display error message -->
+         <div class="alert alert-danger mt-2" role="alert">
+            <%= errorMessage %>
+        </div>
+        <% } %>
+
+        <% 
+        if (successMessage != null && !successMessage.isEmpty()) {
+        %>
+        <!-- Display success message -->
+        <div class="alert alert-success mt-2" role="alert">
+            <%= successMessage %>
+        </div>
+        <% } %>
     
 
 </section>

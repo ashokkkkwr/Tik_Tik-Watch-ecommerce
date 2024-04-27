@@ -39,6 +39,7 @@ public class ProductStringUtils {
 	public static final String SIGNUP_PAGE = "/pages/signup.jsp";
 	public static final String LOGIN_PAGE = "/pages/login.jsp";
 	public static final String HOME_PAGE = "/pages/home.jsp";
+	public static final String ADD_PRODUCT = "/pages/addProduct.jsp";
 	
 	public static final String SIGNUP_SERVLET="/SignupServlet";
 	public static final String LOGIN_SERVLET = "/LoginServlet";
