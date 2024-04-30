@@ -40,10 +40,17 @@ public class AuthenticationFilter implements Filter {
         	 res.sendRedirect(req.getContextPath() + "/pages/admin.jsp");
              return;
         }
-        if(isAdmin && isAdminJ) {
+        else if(isAdmin && isAdminJ) {
         	chain.doFilter(req, res);
             return;
-        }
+        } else if(isLoggedIn && isAdminJ) {
+       	 res.sendRedirect(req.getContextPath() + "/pages/home.jsp");
+         return;
+    }
+    if(isLoggedIn && isHomeJ) {
+    	chain.doFilter(req, res);
+        return;
+    }
         
         
         if(isLoggedIn && isAdminJ) {
