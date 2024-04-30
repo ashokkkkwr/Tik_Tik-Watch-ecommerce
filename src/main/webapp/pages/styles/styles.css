@@ -1,0 +1,555 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;1,300&display=swap');
+
+
+:root {
+
+    --orange: rgb(232, 170, 56);
+    --white: #fff;
+    --light-color: #666;
+    --box-shadow: 0 .1rem 1rem rgba(0, 0, 0.1);
+    --border: 2rem solid rgba(0, 0, 0.1);
+    --outline: .1rem solid rgba(0, 0, 0.1);
+}
+
+* {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    transition: all .2s linear;
+}
+
+html {
+    font-size: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    scroll-padding-top: 7rem;
+}
+
+body {
+    background-color: black;
+}
+
+
+/* Header Starts */
+
+.header {
+    border: 0px solid;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    padding: 2rem 9%;
+    justify-content: space-between;
+    background: rgb(31, 30, 30);
+    z-index: 1000;
+
+    /* box-shadow: var(--box-shadow); */
+
+
+}
+
+.header .logo {
+    font-size: 2.5em;
+    font-weight: bolder;
+    /* color: var(--orange); */
+    color: var(--white);
+
+}
+
+
+.header .navbar a {
+
+    font-size: 1.2rem;
+    margin: 2rem;
+    
+    color: var(--white);
+ 
+}
+
+.header .navbar a:hover {
+    color: var(--orange);
+ 
+
+
+}
+
+
+.header .icons div {
+    border: 0px solid;
+    color: #fff;
+    height: 2.5rem;
+    width: 2.5rem;
+    line-height: 2.5rem;
+    border-radius: 2.5rem;
+    background: #eee;
+    color: var(--light-color);
+    font-size: 1.2em;
+    margin-right: 1rem;
+    text-align: center;
+
+
+    
+
+}
+
+
+.header .icons div:hover {
+    color: var(--white);
+    background: var(--orange);
+
+}
+
+
+
+
+.icons .menu-items li {
+
+    list-style: none;
+}
+
+.icons .menu-items li a {
+    text-decoration: none;
+    color: var(--light-color);
+}
+
+.icons .menu-items {
+    position: absolute;
+    top:85px;
+  /*  top: calc(100% + 0px); Adjust the distance from the header */
+    right: 20px;
+    padding: 10px 20px;
+    background: #fff;
+    width: 131px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: 0.5s;
+    visibility: hidden;
+    opacity: 0;
+}
+
+
+.icons .menu-items.active {
+    visibility: visible;
+    opacity: 1;
+
+}
+
+.icons .menu-items li a:hover {
+    color: black;
+    background-color: #dfd8d8;
+    transition: all ease .3s;
+    visibility: visible;
+    opacity: 1; 
+
+}
+
+
+/* Header Ends */
+
+
+/* Hero Section Starts */
+h1 {
+    color: var(--white);
+    font-size: 4rem;
+    font-weight: 450;
+    margin-left: 20px;
+
+
+
+}
+
+
+p {
+    color: var(--white);
+    line-height: 1.6;
+    /* font-weight: 1.7rem; */
+    font-size: 1.1rem;
+    margin-left: 16px;
+    margin-bottom: 30px;
+
+}
+
+span {
+    color: orange;
+    /* margin: 1rem; */
+
+
+}
+
+
+
+.hero-section {
+    padding: 12rem 0;
+    display: flex;
+    gap: 9rem;
+    box-shadow: var(--box-shadow);
+    background: rgb(31, 30, 30);
+    max-width: 125rem;
+    height: 45rem;
+
+
+
+
+
+
+}
+
+.hero-image {
+    width: 32rem;
+    height: 25rem;
+    border-radius: 3rem;
+    margin-right: 15rem;
+
+
+}
+
+.search-box {
+    background-color: #fff;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    margin-top: 25px;
+    padding: 0px 5px 0px 20px;
+    border-radius: 30px;
+}
+
+.search-box i {
+    font-size: 1.3rem;
+    color: #666;
+    margin: 0px 10px;
+}
+
+.search-box .search-input {
+    height: 40px;
+    width: 100%;
+    border: none;
+    padding: 0px 10px;
+    outline: none;
+}
+
+.search-box .search-btn {
+
+    width: 200px;
+    height: 43px;
+    border-radius: 40px;
+    background-color: var(--orange);
+    border: none;
+    color: var(--white);
+    outline: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all ease 0.3s;
+}
+
+.search-box .search-btn:hover {
+    background-color: cornflowerblue;
+    transition: all ease 0.3s;
+}
+
+
+/* Hero Section Ends */
+
+
+
+/* Product Section Starts */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    background: black;
+    padding: 25px 20px;
+
+}
+
+.container .heading {
+    font-size: 40px;
+    margin-bottom: 20px;
+
+}
+
+.container .box-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+
+}
+
+.container .box-container .box {
+    background-color: rgb(31, 30, 30);
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    width: 300px;
+    margin-bottom: 90px;
+
+
+}
+
+.container .box-container .box .image {
+    margin-bottom: 20px;
+    overflow: hidden;
+    height: 250px;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    /* padding: 20px; */
+}
+
+.container .box-container .box .image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.container .box-container .box .content h3 {
+    font-size: 20px;
+    color: white;
+    text-transform: capitalize;
+}
+
+.container .box-container .box .content {
+    margin-bottom: 40px;
+
+}
+
+
+
+.container .box-container .box .content p {
+    font-size: 15px;
+    color: white;
+    line-height: 2;
+    padding: 10px 0;
+
+}
+
+.container .box-container .box .content .btn {
+    display: inline-block;
+    padding: 10px 35px;
+    border: 1px solid #334;
+    font-size: 15px;
+    background-color: orange;
+    color: white;
+    border-radius: 9px;
+
+
+}
+
+
+.container .box-container .box .content .btn:hover {
+    background-color: #334;
+}
+
+
+
+/* Product Section Ends */
+
+
+
+
+
+/* Order Now Section Starts */
+
+
+.bg-image {
+    position: relative;
+    width: 90%;
+    height: 80vh;
+    background-image: url('imagecat.jpeg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.6;
+    overflow: hidden;
+    margin-bottom: 150px;
+}
+
+
+.bg-content {
+    position: absolute;
+    top: 290%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+
+}
+
+.bg-content h2 {
+    font-size: 30px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.bg-content p {
+    font-size: 15px;
+    color: white;
+    opacity: 0.5;
+}
+
+.bg-content .bg-btn {
+    display: inline-block;
+    padding: 10px 35px;
+    border: 1px solid #334;
+    font-size: 15px;
+    background-color: orange;
+    color: white;
+    border-radius: 25px;
+}
+
+.bg-content .bg-btn:hover {
+
+    background-color: cornflowerblue;
+}
+
+/* Order NoW Section Ends */
+
+
+
+
+/* Footer Section Starts */
+
+
+
+
+
+
+
+.footer {
+    display: grid;
+    /* grid-template-columns:repeat(auto-fit, minimax(200px, auto)); */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    background: rgb(31, 30, 30);
+    position: relative;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 300px;
+    padding-top: 80px;
+}
+
+.footer-content h4 {
+    color: var(--white);
+    font-size: 20px;
+    /* margin-top: 40px; */
+    margin-bottom: 20px;
+    margin-left: 7rem;
+}
+
+.footer-content li {
+    list-style-type: none;
+    margin-bottom: 5px;
+    margin-left: 7rem;
+
+}
+
+.footer-content li a {
+
+    display: block;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 400;
+    transition: all .40s ease;
+
+
+
+
+}
+
+.footer-content li a:hover {
+    transform: translateY(-3px) translateX(-5px);
+    cursor: pointer;
+    color: aqua;
+}
+
+
+.footer .logo-foot {
+    font-size: 2.5em;
+    font-weight: bolder;
+    /* color: var(--orange); */
+    color: var(--white);
+    margin-left: 9.5rem;
+    margin-bottom: 20px;
+
+
+}
+
+.footer .par {
+    color: var(--white);
+    line-height: 1.6;
+    /* font-weight: 1.7rem; */
+    font-size: 1.1rem;
+    margin-left: 9.5rem;
+    margin-bottom: 30px;
+    margin-top: 20px;
+    text-transform: uppercase;
+
+
+}
+.footer-icons{
+    margin-left: 9.5rem;
+}
+
+
+.footer-icons a {
+    display: inline-block;
+    /* font-size: 22px; */
+    /* color: var(--white); */
+    margin-right: 25px;
+    /* margin-left: 9.5rem; */
+    transition: all .40s ease;
+   
+
+}
+.fb{
+    color: #1877f2;
+    border: 0px solid;
+    height: 2rem;
+    width: 2rem;
+    line-height: 2rem;
+    border-radius: 2.5rem;
+    background: #eee;
+    font-size: 2rem;
+    margin-right: 3rem;
+    text-align: center;
+
+}
+
+.insta{
+    color: #c32aa3;
+    border: 0px solid;
+    height: 2rem;
+    width: 2rem;
+    line-height: 2rem;
+    border-radius: 2.5rem;
+    background: #eee;
+    font-size: 2rem;
+    margin-right: 3rem;
+    text-align: center;
+}
+.twitter{
+    color: #000000;
+    border: 0px solid;
+    height: 2rem;
+    width: 2rem;
+    line-height: 2rem;
+    border-radius: 2.5rem;
+    background: #eee;
+    font-size: 2rem;
+    margin-right: 3rem;
+    text-align: center;
+}
+
+.footer-icons a:hover {
+    transform: translateY(-5px);
+    cursor: pointer;
+    color: black;
+}
+
+
+
+/* Footer Section Ends */

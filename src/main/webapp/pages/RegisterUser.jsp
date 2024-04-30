@@ -1,6 +1,8 @@
-<%@ include file="home.jsp" %>
 <%@ page import="model.UsersModel" %>
 <%@ page import="java.util.List" %>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/pages/styles/header.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/pages/styles/allProducts.css">
+  <jsp:include page="adminHeader.jsp"></jsp:include>  
 
 <div class="container mt-5">
     <h1 class="mb-4">Registered Users</h1>
