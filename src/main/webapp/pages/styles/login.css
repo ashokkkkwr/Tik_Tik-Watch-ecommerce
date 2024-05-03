@@ -57,7 +57,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url("./image/image_smart.jpg");
+    background-image: url("image_smart.jpg");
     background-size: cover;
     background-position: left; 
     transform: scaleX(-1); /* Flip the background image horizontally */

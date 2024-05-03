@@ -6,6 +6,11 @@
 				<a href="${pageContext.request.contextPath}/UsersServlet">Edit users</a>
 				<a href="${pageContext.request.contextPath}/ProductsServlet">View Products</a>
 				<a href="${pageContext.request.contextPath}/pages/addProduct.jsp">Add Product</a>
+				<a href="${pageContext.request.contextPath}/UserProductServlet">View Products</a>
+				
+
+				
+					<a href="${pageContext.request.contextPath}/GetUsers">single users</a>
 	
 	
 	</nav>

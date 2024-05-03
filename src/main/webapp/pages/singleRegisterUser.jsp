@@ -1,19 +1,29 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <%@ page import="model.UsersModel" %>
 <%@ page import="java.util.List" %>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/pages/styles/header.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/pages/styles/allProducts.css">
-  <jsp:include page="adminHeader.jsp"></jsp:include>  
+<jsp:include page="adminHeader.jsp"></jsp:include>  
 
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+<h1>single registered user</h1>
 <div class="container mt-5">
-    <h1 class="mb-4">Registered Users</h1>
+    <h1 class="mb-4">Registered User Details</h1>
 
     <div class="row">
+    
         <%
-        List<UsersModel> users = (List<UsersModel>) request.getAttribute("users");
+        List<UsersModel> users = (List<UsersModel>) request.getAttribute("loggedInUser");
         if (users != null && !users.isEmpty()) {
             for (UsersModel user : users) {
         %>
-
         <div class="col-md-4 mb-4">
             <div class="card h-100 shadow-sm">
                 <img class="card-img-top img-fluid" style="max-width: 100px; height: auto;"
@@ -28,22 +38,18 @@
                 </div>
             </div>
         </div>
-
-        <%
-            }
-        } else {
-        %>
-
+        <% 
+            } // end of for loop
+        } else { %>
         <div class="col-md-12">
             <div class="alert alert-secondary" role="alert">
-                No users found
+                No user found
             </div>
         </div>
-
-        <%
-        }
-        %>
+        <% } %>
     </div>
 </div>
 
 
+</body>
+</html>

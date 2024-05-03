@@ -1,3 +1,6 @@
+<%@ page import="model.ProductsModel" %>
+<%@ page import="java.util.List" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,6 +24,20 @@
     <!-- Header Section Starts -->
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <header class="header">
         <a href="index.html" class="logo">TIK<span>TIK.</span></a>
         <nav class="navbar">
@@ -28,6 +45,9 @@
             <a href="products.html">PRODUCT</a>
             <a href="#aboutus">ABOUT US</a>
             <a href="signup.html">SIGN UP</a>
+            
+            
+            
         </nav>
 
         <div class="icons">
@@ -83,7 +103,8 @@
             </div>
             <!-- Hero section right side -->
             <div class="hero-image">
-                <img src="image copy.png" alt="watch image" class="hero-image">
+            
+<img src="${pageContext.request.contextPath}/images/image copy.png" alt="watch image" class="hero-image">
             </div>
 
         </section>
@@ -96,86 +117,29 @@
 
 
     <!-- Product Section Starts-->
+ 
+ 
+ 
+ 
+ 
 
 
-    <div class="container">
-        <h1 class="heading">Best of our products.</h1>
-        <p>Our most popular product among the customers.</p>
+ 
+ 
+ 
+ 
 
-        <div class="box-container">
-            <div class="box">
-                <div class="image">
-                    <img src="image.png" alt="watch image">
-                </div>
-                <div class="content">
-                    <h3>Apple watch mockup.</h3>
-                    <p>$128</p>
-                    <a href="#" class="btn">Add To Cart</a>
-                </div>
-            </div>
-
-
-            <div class="box">
-                <div class="image">
-                    <img src="image copy.png" alt="watch image">
-                </div>
-                <div class="content">
-                    <h3>Apple watch mockup.</h3>
-                    <p>$128</p>
-                    <a href="#" class="btn">Add To Cart</a>
-                </div>
-            </div>
-
-
-            <div class="box">
-                <div class="image">
-                    <img src="image.png" alt="watch image">
-                </div>
-                <div class="content">
-                    <h3>Apple watch mockup.</h3>
-                    <p>$128</p>
-                    <a href="#" class="btn">Add To Cart</a>
-                </div>
-            </div>
-
-
-
-            <div class="box">
-                <div class="image">
-                    <img src="featured1.png" alt="watch image">
-                </div>
-                <div class="content">
-                    <h3>Apple watch mockup.</h3>
-                    <p>$128</p>
-                    <a href="#" class="btn">Add To Cart</a>
-                </div>
-            </div>
-
-
-
-            <div class="box">
-                <div class="image">
-                    <img src="featured2.png" alt="watch image">
-                </div>
-                <div class="content">
-                    <h3>Apple watch mockup.</h3>
-                    <p>$128</p>
-                    <a href="#" class="btn">Add To Cart</a>
-                </div>
-            </div>
-
-
-
-            <div class="box">
-                <div class="image">
-                    <img src="featured3.png" alt="watch image">
-                </div>
-                <div class="content">
-                    <h3>Apple watch mockup.</h3>
-                    <p>$128</p>
-                    <a href="#" class="btn">Add To Cart</a>
-                </div>
-            </div>
+    
+        <div id="productContent"></div>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function(){
+    $.get("${pageContext.request.contextPath}/UserProductServlet", function(data, status){
+      $("#productContent").html(data);
+    });
+  });
+</script>
+            
 
 
 
@@ -186,30 +150,6 @@
     <!-- Product Section Ends -->
 
 
-
-
-
-    <!-- Order Now Section Starts -->
-
-
-    <div class="container">
-        <div class="bg-image"></div>
-        <div class="bg-content">
-            <h2 class="bg-heading">Live In You Watch, Play In Ours.</h2>
-            <p>High and low heart rate notifications Irregular rhythm notifications Low cardio fitness notifications.
-                A wristwatch is one of the most important things in a man's outfit. It is the only piece of jewelry that
-                can be worn all day long and yet not be too flashy. It adds a subtle touch to your look, giving it an
-                touch of sophistication and elegance.
-            </p>
-            <a href="#" class="bg-btn">Order Now</a>
-
-        </div>
-
-
-    </div>
-
-
-    <!-- Order Now Section Ends -->
 
 
 

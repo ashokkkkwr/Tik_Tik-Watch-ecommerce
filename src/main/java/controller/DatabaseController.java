@@ -52,7 +52,8 @@ public class DatabaseController {
             }
 
             // Encrypt password before storing it in the database
-            String encryptedPassword = PasswordEncryptionWithAes.encryptPassword(userModel.getPassword(), "U3CdwubLD5yQbUOG92ZnHw==");
+            String encryptedPassword = PasswordEncryptionWithAes.encryptPassword(userModel.getPassword(),
+                    "U3CdwubLD5yQbUOG92ZnHw==");
 
             PreparedStatement st = con.prepareStatement(StringUtils.SIGNUP);
             st.setString(1, userModel.getUserName());
@@ -71,6 +72,7 @@ public class DatabaseController {
             return -1;
         }
     }
+
     public int getLogin(String email, String password, String isAdmin) {
         try (Connection con = getConnection()) {
             PreparedStatement user = con.prepareStatement(StringUtils.GET_LOGIN_INFO);
@@ -80,19 +82,20 @@ public class DatabaseController {
                 String userDb = rs.getString("email");
                 String encryptedPassword = rs.getString("password");
                 String admin = rs.getString("is_Admin");
-//                System.out.println("email from DB: " + userDb);
-//                System.out.println("Encrypted Password from DB: " + encryptedPassword);
-//                System.out.println("is admin is"+admin);
+                // System.out.println("email from DB: " + userDb);
+                // System.out.println("Encrypted Password from DB: " + encryptedPassword);
+                // System.out.println("is admin is"+admin);
                 // Decrypt password from database and compare
-                String decryptedPassword = PasswordEncryptionWithAes.decryptPassword(encryptedPassword, "U3CdwubLD5yQbUOG92ZnHw==");
+                String decryptedPassword = PasswordEncryptionWithAes.decryptPassword(encryptedPassword,
+                        "U3CdwubLD5yQbUOG92ZnHw==");
                 System.out.println("Decrypted Password: " + decryptedPassword);
 
                 if (decryptedPassword != null && userDb.equals(email) && decryptedPassword.equals(password)) {
-                   if(admin != null) {
-                	   return 2;//login as admin successfull.
-                   }else {
-                	return 1;
-                   }// Login successful
+                    if (admin != null) {
+                        return 2;// login as admin successfull.
+                    } else {
+                        return 1;
+                    } // Login successful
                 } else {
                     return 0; // Password mismatch
                 }
@@ -109,9 +112,50 @@ public class DatabaseController {
         }
     }
 
+    public int addProduct(ProductsModel productModel) {
+        try (Connection con = getConnection();
+                PreparedStatement product = con.prepareStatement(ProductStringUtils.INSERT_PRODUCT);
+                PreparedStatement checkProduct = con.prepareStatement(ProductStringUtils.GET_PRODUCT_NAME)) {
+
+            // Check if the product already exists
+            checkProduct.setString(1, productModel.getProductName());
+            try (ResultSet checkProductRs = checkProduct.executeQuery()) {
+                if (checkProductRs.next()) {
+                    return -2; // Product already exists
+                }
+            }
+
+            // Insert the new product
+            product.setString(1, productModel.getProductName());
+            product.setString(2, productModel.getProductDescription());
+            product.setString(3, productModel.getProductCategory());
+            product.setString(4, productModel.getProductPrice());
+            product.setString(5, productModel.getProductAvailability());
+            product.setString(6, productModel.getProductModels());
+            product.setString(7, productModel.getProductSize());
+            product.setString(8, productModel.getProductColor());
+            product.setString(9, productModel.getProductDialShape());
+            product.setString(10, productModel.getProductCompatibleOs());
+            product.setString(11, productModel.getImageUrlFromPart());
+
+            // Execute the insert statement
+            int result = product.executeUpdate();
+
+            // Check if the insertion was successful
+            return result > 0 ? 1 : 0;
+
+        } catch (SQLException | ClassNotFoundException ex) {
+            ex.printStackTrace(); // Log the exception for debugging
+            return -1; // Error occurred
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
+
     public UsersModel getUserDetails(String email) throws ClassNotFoundException {
         try (Connection connection = getConnection();
-             PreparedStatement statement = connection.prepareStatement(StringUtils.GET_LOGIN_INFO)) {
+                PreparedStatement statement = connection.prepareStatement(StringUtils.GET_LOGIN_INFO)) {
             statement.setString(1, email);
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
@@ -133,9 +177,30 @@ public class DatabaseController {
             e.printStackTrace(); // Handle or log the exception as needed
             return null;
         }
+    }// get users
+
+    public List<UsersModel> getAllUsers1(String email) {
+        List<UsersModel> users = new ArrayList<>();
+        try (Connection con = getConnection()) {
+            PreparedStatement st = con.prepareStatement("SELECT * FROM users WHERE email=?");
+            st.setString(1, email);
+
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                UsersModel user = new UsersModel();
+                user.setEmail(rs.getString("email"));
+                user.setLocation(rs.getString("location"));
+                user.setImageUrlFromString(rs.getString("profile_Img"));
+                // Populate other fields as needed
+                users.add(user);
+            }
+        } catch (SQLException | ClassNotFoundException ex) {
+            ex.printStackTrace(); // Log the exception for debugging
+        }
+        return users;
     }
-    
-   //list all users 
+
+    // list all users
     public List<UsersModel> getAllUsers() {
         List<UsersModel> users = new ArrayList<>();
         try (Connection con = getConnection()) {
@@ -153,7 +218,8 @@ public class DatabaseController {
             ex.printStackTrace(); // Log the exception for debugging
         }
         return users;
-    }  
+    }
+
     // list all products:
     public List<ProductsModel> getAllProducts() {
         List<ProductsModel> products = new ArrayList<>();
@@ -162,6 +228,7 @@ public class DatabaseController {
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 ProductsModel product = new ProductsModel();
+                product.setProdId(rs.getInt("prod_Id"));
                 product.setProductName(rs.getString("prod_Name"));
                 product.setProductDescription(rs.getString("prod_Description"));
                 product.setProductCategory(rs.getString("prod_Category"));
@@ -173,10 +240,7 @@ public class DatabaseController {
                 product.setProductColor(rs.getString("prod_color"));
                 product.setProductDialShape(rs.getString("prod_dial_shape"));
                 product.setProductCompatibleOs(rs.getString("prod_compatible_os"));
-                
-                
-
-
+                product.setImageUrlFromString(rs.getString("profile_Img"));
 
                 // Populate other fields as needed
                 products.add(product);
@@ -185,53 +249,55 @@ public class DatabaseController {
             ex.printStackTrace(); // Log the exception for debugging
         }
         return products;
-    } 
+    }
 
-    public int addProduct(ProductsModel productModel) {
-        try (Connection con = getConnection();
-             PreparedStatement product = con.prepareStatement(ProductStringUtils.INSERT_PRODUCT);
-             PreparedStatement checkProduct = con.prepareStatement(ProductStringUtils.GET_PRODUCT_NAME)) {
+    // delete product:
+    public int deleteProduct(int id) {
+        try (Connection con = getConnection()) {
+            PreparedStatement st = con.prepareStatement(ProductStringUtils.DELETE_PRODUCT_INFO_BY_ID);
+            st.setInt(1, id);
 
-            // Check if the product already exists
-            checkProduct.setString(1, productModel.getProductName());
-            try (ResultSet checkProductRs = checkProduct.executeQuery()) {
-                if (checkProductRs.next()) {
-                    return -2; // Product already exists
-                }
-            }
-
-            // Insert the new product
-            product.setString(1, productModel.getProductName());
-            product.setString(2, productModel.getProductDescription());
-            product.setString(3, productModel.getProductCategory());
-            product.setString(4, productModel.getProductPrice());
-            product.setString(5, productModel.getProductAvailability());
-            product.setString(6, productModel.getProductModels());
-            product.setString(7, productModel.getProductSize());
-            product.setString(8, productModel.getProductColor());
-            product.setString(9, productModel.getProductDialShape());
-            product.setString(10, productModel.getProductCompatibleOs());
-         
-           
-
-            // Execute the insert statement
-            int result = product.executeUpdate();
-
-            // Check if the insertion was successful
-            return result > 0 ? 1 : 0;
-
+            int result = st.executeUpdate();
+            return result > 0 ? 1 : 0; // Return 1 if deletion is successful, otherwise return 0
         } catch (SQLException | ClassNotFoundException ex) {
             ex.printStackTrace(); // Log the exception for debugging
-            return -1; // Error occurred
-        }catch(Exception e) {
-        	e.printStackTrace();
-        	return -1;
+            return -1; // Return -1 for any exceptions
         }
     }
- // add to cart:
+
+    // update product
+    public int updateProduct(ProductsModel productModel) {
+        System.out.println("kina?");
+        try (Connection con = getConnection()) {
+            PreparedStatement st = con.prepareStatement(ProductStringUtils.UPDATE_PRODUCT);
+
+            st.setString(1, productModel.getProductName());
+            st.setString(2, productModel.getProductDescription());
+            st.setString(3, productModel.getProductCategory());
+            st.setString(4, productModel.getProductPrice());
+            st.setString(5, productModel.getProductAvailability());
+            st.setString(6, productModel.getProductModels());
+            st.setString(7, productModel.getProductSize());
+            st.setString(8, productModel.getProductColor());
+            st.setString(9, productModel.getProductDialShape());
+            st.setString(10, productModel.getProductCompatibleOs());
+            st.setInt(11, productModel.getProdId());
+
+            int result = st.executeUpdate();
+            return result > 0 ? 1 : 0;
+        } catch (SQLException | ClassNotFoundException ex) {
+            ex.printStackTrace(); // Log the exception for debugging
+            return -1;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
+
+    // add to cart:
     public int addCart(CartModel cartModel) {
         try (Connection con = getConnection();
-             PreparedStatement cart = con.prepareStatement(StringUtils.ADD_TO_CART)) {
+                PreparedStatement cart = con.prepareStatement(StringUtils.ADD_TO_CART)) {
 
             // Insert the new product
             cart.setString(1, cartModel.getQuantity());
@@ -253,14 +319,13 @@ public class DatabaseController {
         }
     }
 
-    
-
-    //add to cart feature:
+    // add to cart feature:
 
     public int addToCart(int userId, int productId, int quantity) {
         try (Connection con = getConnection()) {
             // Check if the product already exists in the user's cart
-            PreparedStatement checkCartStmt = con.prepareStatement("SELECT * FROM cart WHERE user_id = ? AND product_id = ?");
+            PreparedStatement checkCartStmt = con
+                    .prepareStatement("SELECT * FROM cart WHERE user_id = ? AND product_id = ?");
             checkCartStmt.setInt(1, userId);
             checkCartStmt.setInt(2, productId);
             ResultSet rs = checkCartStmt.executeQuery();
@@ -268,7 +333,8 @@ public class DatabaseController {
                 // Product already exists, update quantity
                 int existingQuantity = rs.getInt("quantity");
                 int newQuantity = existingQuantity + quantity;
-                PreparedStatement updateCartStmt = con.prepareStatement("UPDATE cart SET quantity = ? WHERE user_id = ? AND product_id = ?");
+                PreparedStatement updateCartStmt = con
+                        .prepareStatement("UPDATE cart SET quantity = ? WHERE user_id = ? AND product_id = ?");
                 updateCartStmt.setInt(1, newQuantity);
                 updateCartStmt.setInt(2, userId);
                 updateCartStmt.setInt(3, productId);
@@ -276,7 +342,8 @@ public class DatabaseController {
                 return 1; // Success
             } else {
                 // Product not in cart, add new entry
-                PreparedStatement addToCartStmt = con.prepareStatement("INSERT INTO cart (quantity, product_id, user_id) VALUES (?, ?, ?)");
+                PreparedStatement addToCartStmt = con
+                        .prepareStatement("INSERT INTO cart (quantity, product_id, user_id) VALUES (?, ?, ?)");
                 addToCartStmt.setInt(1, quantity);
                 addToCartStmt.setInt(2, productId);
                 addToCartStmt.setInt(3, userId);
@@ -292,7 +359,8 @@ public class DatabaseController {
 
     public int removeFromCart(int userId, int productId) {
         try (Connection con = getConnection()) {
-            PreparedStatement removeFromCartStmt = con.prepareStatement("DELETE FROM cart WHERE user_id = ? AND product_id = ?");
+            PreparedStatement removeFromCartStmt = con
+                    .prepareStatement("DELETE FROM cart WHERE user_id = ? AND product_id = ?");
             removeFromCartStmt.setInt(1, userId);
             removeFromCartStmt.setInt(2, productId);
             int rowsAffected = removeFromCartStmt.executeUpdate();
@@ -303,6 +371,3 @@ public class DatabaseController {
         }
     }
 }
-
-
-
