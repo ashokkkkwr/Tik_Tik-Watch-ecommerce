@@ -1,6 +1,12 @@
 package model;
 
+import java.io.File;
+
+import javax.servlet.http.Part;
+
 public class ProductsModel {
+	private int prodId;
+
 private String productName;
 private String productDescription;
 private String productCategory;
@@ -11,12 +17,13 @@ private String productSize;
 private String productColor;
 private String productDialShape;
 private String productCompatibleOs;
+private String imageUrlFromPart;
 
 
 
-public ProductsModel(String productName, String productDescription, String productCategory, String productPrice,
+public ProductsModel( String productName, String productDescription, String productCategory, String productPrice,
 		String productAvailability, String productModels, String productSize, String productColor,
-		String productDialShape, String productCompatibleOs) {
+		String productDialShape, String productCompatibleOs,Part imagePart) {
 	super();
 	this.productName = productName;
 	this.productDescription = productDescription;
@@ -28,9 +35,19 @@ public ProductsModel(String productName, String productDescription, String produ
 	this.productColor = productColor;
 	this.productDialShape = productDialShape;
 	this.productCompatibleOs = productCompatibleOs;
+	this.imageUrlFromPart=getImageUrl(imagePart);
 }
+
 public ProductsModel() {
-	
+	// TODO Auto-generated constructor stub
+}
+
+public int getProdId() {
+	return prodId;
+}
+
+public void setProdId(int prodId) {
+	this.prodId = prodId;
 }
 public String getProductName() {
 	return productName;
@@ -92,5 +109,35 @@ public String getProductCompatibleOs() {
 public void setProductCompatibleOs(String productCompatibleOs) {
 	this.productCompatibleOs = productCompatibleOs;
 }
+
+public String getImageUrl(Part image) {
+	String savePath = "/home/arch/eclipse-test/ecommerce/src/main/webapp/images";
+	File files = new File(savePath);
+	String getImgPart = null;
+	if(!files.exists()) {
+	files.mkdir();} 
+	String contDisp = image.getHeader("content-disposition");
+	String item[] = contDisp.split(";");
+	for(String i : item) {
+		if(i.trim().startsWith("filename")) {
+		getImgPart = i.substring(i.indexOf("=")+2,i.length()-1);
+		}
+	}
+	if(getImgPart==null || getImgPart.isEmpty()) {
+		getImgPart="default.png";
+	}
+	return getImgPart;
+}
+
+public String getImageUrlFromPart() {
+	return imageUrlFromPart;
+}
+
+public void setImageFromPart(Part image) {
+	this.imageUrlFromPart = getImageUrl(image);
+}
+ public void setImageUrlFromString(String imageUrl) {
+        this.imageUrlFromPart = imageUrl;
+    }
 
 }

@@ -1,11 +1,16 @@
 package util;
 
+import java.io.File;
+
 public class ProductStringUtils {
     public static final String INSERT_PRODUCT = "INSERT into products "
-            + "(prod_name,prod_description,prod_category, prod_price, prod_availability,prod_model, prod_size, prod_color,prod_dial_shape, prod_compatible_os)"
-            + "VALUES(?,?,?,?,?,?,?,?,?,?)";
+            + "(prod_name,prod_description,prod_category, prod_price, prod_availability,prod_model, prod_size, prod_color,prod_dial_shape, prod_compatible_os,profile_Img)"
+            + "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
     public static final String GET_ALL_PRODUCTS = "SELECT * FROM products";
     public static final String GET_PRODUCT_NAME = "SELECT * FROM products WHERE prod_name=?";
+    public static final String DELETE_PRODUCT_INFO_BY_ID="DELETE FROM products WHERE prod_id = ?";
+    public static final String UPDATE_PRODUCT = "UPDATE products SET  prod_name=?,prod_description=?, prod_category=?, prod_price=?, prod_availability=?, prod_model=?, prod_size=?, prod_color=?, prod_dial_shape=?, prod_compatible_os=? WHERE prod_id=?";
+
 
     public static final String PRODUCT_NAME = "prod_name";
     public static final String PRODUCT_DESCRIPTION = "prod_description";
@@ -46,7 +51,10 @@ public class ProductStringUtils {
 	public static final String USERS_SERVLET = "/UsersServlet";
 	public static final String PRODUCT_SERVLET = "/ProductServlet";
 	public static final String PRODUCTS_SERVLET = "/ProductsServlet";
+	public static final String USER_PRODUCT_SERVLET = "/UserProductServlet";
 
-	
+
+	public static final String IMG_DIR = "Users\\tiger\\eclipse-test\\Tik_Tik\\src\\main\\webapp\\images\\";
+	public static final String IMG_DIR_SAVE_PATH = "C:"+File.separator+IMG_DIR;
 
 }

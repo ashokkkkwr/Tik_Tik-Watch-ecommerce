@@ -11,7 +11,7 @@ public class StringUtils {
 	public static final String GET_LOGIN_INFO = "SELECT * FROM users WHERE email = ?";
 	public static final String GET_USERNAME = "SELECT * FROM users WHERE userName=?";
 	public static final String GET_PHONE = "SELECT * FROM users WHERE phone=?";
-	public static final String GET_EMAIL = "SELECT * FROM users WHERE EMAIL=?";
+	public static final String GET_EMAIL = "SELECT * FROM users WHERE email=?";
 	public static final String GET_ALL_USERS = "SELECT * FROM users";
 	public static final String GET_IMAGE = "SELECT profile_Img FROM users";
 
@@ -52,11 +52,15 @@ public class StringUtils {
 	public static final String EMAIL_ERROR_MESSAGE = "Email is already Taken.";
 	public static final String PHONE_NUMBER_ERROR_MESSAGE = "Number is already in use.";
 	public static final String PASSWORD_UNMATCHED_ERROR_MESSAGE = "Passwords do not match. Please try again.";
+	public static final String  SUCCESS_DELETE_MESSAGE= "Product Deleted Successfully";
+	public static final String  ERROR_DELETE_MESSAGE= "Error while deleting product ";
+	public static final String  ERROR_UPDATE_MESSAGE="Error while updating product ";
 	//login page messages
 	public static final String SUCCESS_LOGIN_MESSAGE = "Successfully LoggedIn!";
 	public static final String ERROR_LOGIN_MESSAGE = "Invalid credentials!";
 	//global messages
 	public static final String SUCCESS_MESSAGE = "Successful message";
+	public static final String SUCCESS_UPDATE_MESSAGE="product Added Successfully";
 	public static final String ERROR_MESSAGE = "Error message";
 	//jsp routes
 	public static final String SIGNUP_PAGE = "/pages/signup.jsp";
@@ -69,7 +73,8 @@ public class StringUtils {
 
 	public static final String LOGIN_SERVLET = "/LoginServlet";
 	public static final String USERS_SERVLET = "/UsersServlet";
-	
+	public static final String GET_USERS="/GetUsers";
+	public static final String PRODUCTS_SERVLET="/ProductsServlet";
 	
 	public static final String IMG_DIR = "Users\\tiger\\eclipse-test\\Tik_Tik\\src\\main\\webapp\\images\\";
 	public static final String IMG_DIR_SAVE_PATH = "C:"+File.separator+IMG_DIR;

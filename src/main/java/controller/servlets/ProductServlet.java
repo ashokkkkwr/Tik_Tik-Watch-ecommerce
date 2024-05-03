@@ -7,11 +7,12 @@ import java.time.LocalDate;
 
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.Part;
 
 import controller.DatabaseController;
 import model.ProductsModel;
@@ -19,6 +20,7 @@ import util.ProductStringUtils;
 
 
 @WebServlet(asyncSupported = true, urlPatterns = { ProductStringUtils.PRODUCT_SERVLET })
+@MultipartConfig
 public class ProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	DatabaseController dbController = new DatabaseController();
@@ -51,12 +53,18 @@ public class ProductServlet extends HttpServlet {
 		String productColor = request.getParameter(ProductStringUtils.PRODUCT_COLOR);
 		String productDialShape = request.getParameter(ProductStringUtils.PRODUCT_DIAL_SHAPE);
 		String productCompatibleOs = request.getParameter(ProductStringUtils.PRODUCT_COMPATIBLE_OS);
+		Part imagePart=request.getPart("image");
 
 		
 
  
         
-		ProductsModel productModel = new ProductsModel(productName,productDescription,productCategory,productPrice,productAvailability,productModels,productSize,productColor,productDialShape,productCompatibleOs);
+		ProductsModel productModel = new ProductsModel(productName,productDescription,productCategory,productPrice,productAvailability,productModels,productSize,productColor,productDialShape,productCompatibleOs,imagePart);	
+		String savePath = ProductStringUtils.IMG_DIR_SAVE_PATH;
+        String fileName= productModel.getImageUrlFromPart();
+        if(!fileName.isEmpty() && fileName !=null)
+        	imagePart.write(savePath + fileName);
+		
 		
 		int result = dbController.addProduct(productModel);
 		System.out.println(result);

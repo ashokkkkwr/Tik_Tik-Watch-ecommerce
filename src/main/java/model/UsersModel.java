@@ -27,6 +27,7 @@ public class UsersModel {
 	public UsersModel() {
 		
 	}
+
 	public String getUserName() {
 		return userName;
 	}

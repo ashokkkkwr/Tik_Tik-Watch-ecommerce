@@ -32,7 +32,7 @@
 <main>
 <section class="add-product">
 <h2>Add new Product</h2>
- <form action="${pageContext.request.contextPath}/ProductServlet" method="post">
+ <form action="${pageContext.request.contextPath}/ProductServlet" method="post" enctype="multipart/form-data">
         <div class="input-group">
             <label for="productName">Product Name:</label>
             <input type="text" id="productName" name="prod_name" required>
@@ -76,6 +76,9 @@
         <div class="input-group">
         <button type="submit" class="add-btn">Add Product</button>
         </div>
+        <div class="input-group">
+	<label for="image">Profile Picture</label> <input type="file" id="image" name="image">
+	</div>
     
     </form>
      <% 
