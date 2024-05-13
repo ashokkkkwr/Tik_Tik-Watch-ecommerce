@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import controller.DatabaseController;
 import model.ProductsModel;
+import model.UsersModel;
 import util.ProductStringUtils;
 
 
@@ -21,8 +22,42 @@ public class UserProductServlet extends HttpServlet {
         super();
     }
 
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+    	
+    	
+        // Retrieve email from the session
+        String email = (String) request.getSession().getAttribute("Adminemail");
+        if (email == null || email.isEmpty()) {
+            // If "Adminemail" is not found in the session, try "email"
+            email = (String) request.getSession().getAttribute("email");
+            System.out.println(email);
+        }
+
+        
+            // Fetch users from the database based on the email
+            List<UsersModel> users = dbController.getAllUsers1(email);
+
+            // Set the users as an attribute in the request object
+            request.setAttribute("loggedInUser", users);
+
+            // Forward the request to the singleRegisterUser.jsp page
+           
+
+           
+        
+            // If neither "Adminemail" nor "email" is found in the session, redirect to login page
+
         // Fetch all student details from the database
         List<ProductsModel> products = dbController.getAllProducts();
 

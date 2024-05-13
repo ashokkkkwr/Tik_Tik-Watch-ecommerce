@@ -50,8 +50,8 @@
             <input type="number" id="productPrice" name="prod_price" required>
         </div>
         <div class="input-group">
-            <label for="productAvailability">Product Availability:</label>
-            <input type="text" id="productAvailability" name="prod_availability" required>
+            <label for="productStock">Product Stock:</label>
+            <input type="text" id="productStock" name="prod_stock" required>
         </div>
          <div class="input-group">
             <label for="productModel">Product Model:</label>
@@ -72,13 +72,14 @@
          <div class="input-group">
             <label for="productCompatibleOs">Product Compatible Os:</label>
             <input type="text" id="productCompatibleOs" name="prod_compatible_os" required>
-        </div>    
+        </div> 
+        <div class="input-group">
+	<label for="image">Profile Picture</label> <input type="file" id="image" name="image">
+	</div>   
         <div class="input-group">
         <button type="submit" class="add-btn">Add Product</button>
         </div>
-        <div class="input-group">
-	<label for="image">Profile Picture</label> <input type="file" id="image" name="image">
-	</div>
+        
     
     </form>
      <% 
@@ -105,6 +106,7 @@
 
 </section>
 </main>
+<jsp:include page="footer.jsp"></jsp:include>
 
 
 

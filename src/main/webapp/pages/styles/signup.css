@@ -30,135 +30,8 @@ html {
 }
 
 body {
-    
+    background-color: black;
 }
-
-
-/* Header Starts */
-
-.header {
-    border: 0px solid;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    padding: 2rem 9%;
-    justify-content: space-between;
-    background: rgb(31, 30, 30);
-    z-index: 1000;
-
-    /* box-shadow: var(--box-shadow); */
-
-
-}
-
-.header .logo {
-    font-size: 2.5em;
-    font-weight: bolder;
-    /* color: var(--orange); */
-    color: var(--white);
-
-}
-
-.header .navbar a {
-    font-size: 1.2rem;
-    margin: 0 4rem;
-    color: var(--white);
- 
-}
-
-.header .navbar a:hover {
-    color: var(--orange);
- 
-
-
-}
-
-
-.header .icons div {
-    border: 0px solid;
-    color: #fff;
-    height: 2.5rem;
-    width: 2.5rem;
-    line-height: 2.5rem;
-    border-radius: 2.5rem;
-    background: #eee;
-    color: var(--light-color);
-    font-size: 1.2rem;
-    margin-right: 3rem;
-    text-align: center;
-
-    
-
-}
-
-
-.header .icons div:hover {
-    color: var(--white);
-    background: var(--orange);
-
-}
-
-
-
-
-.icons .menu-items li {
-
-    list-style: none;
-}
-
-.icons .menu-items li a {
-    text-decoration: none;
-    color: var(--light-color);
-}
-
-.icons .menu-items {
-    position: absolute;
-    top:85px;
-  /*  top: calc(100% + 0px); Adjust the distance from the header */
-    right: 50px;
-    padding: 10px 20px;
-    background: #fff;
-    width: 131px;
-    border-radius: 5px;
-    box-sizing: border-box;
-    transition: 0.5s;
-    visibility: hidden;
-    opacity: 0;
-}
-
-
-.icons .menu-items.active {
-    visibility: visible;
-    opacity: 1;
-
-}
-
-.icons .menu-items li a:hover {
-    color: black;
-    background-color: #dfd8d8;
-    transition: all ease .3s;
-    visibility: visible;
-    opacity: 1; 
-
-}
-
-
-/* Other Parts */
-
-
-
-
-span {
-    color: orange;
-    /* margin: 1rem; */
-
-
-}
-
-/* Other Parts */
 
 
 /* Header Ends */
@@ -169,13 +42,14 @@ span {
     border-radius:20px;
     padding-top: 5px;
     background-color: rgb(217, 192, 192);
-    height: 700px; 
-    width: 1000px; 
-    margin: 100px 200px;
-    background-image: url("image.png");
-    /* position: relative; */
-    background-size: 100%;
-    background-position: left; 
+    height: 800px; 
+    width: 1100px; 
+    margin-left:370px;
+    margin-top:50px;
+    background-image: url("image_smart.jpg");
+    position: relative;
+    background-size: cover;
+    background-position: center; 
     /* opacity: 0.6; */
     overflow: hidden;
 
@@ -183,10 +57,12 @@ span {
    
 }
 
+
+
 .signup-box{
 
-    width: 360px;
-    height: 630px;
+    width: 400px;
+    height: 760px;
     margin: auto;
     background-color: white;
     border-radius: 25px;
@@ -215,7 +91,7 @@ form label{
 
 }
 form input{
-    width: 250px;
+    width: 270px;
     height: 35px;
     padding: 9px;
     border: none;
@@ -230,7 +106,7 @@ p{
     text-align: center;
     font-size: 15px;
     color: rgb(91, 91, 230);
-    margin-bottom: 19px;
+    margin-bottom: 40px;
 
   
 }
@@ -238,7 +114,7 @@ p a{
     color: rgb(91, 91, 230);
     text-decoration: none;
 }
-input[type="submit"]{
+.button button[type="submit"] {
     width: 150px;
     height: 40px;
     margin:0 auto;
@@ -261,7 +137,7 @@ input[type="submit"]{
 
 }
 
-input[type="submit"]:hover, input[type="submit"]:focus, input[type="submit"]:active{
+.button button[type="submit"]:hover, input[type="submit"]:focus, input[type="submit"]:active{
 
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     -webkit-transform: scale(1.1);
@@ -281,157 +157,12 @@ input[type="submit"]:hover, input[type="submit"]:focus, input[type="submit"]:act
 .input-control.error input{
     border-color: #ff3860;
 }
-.input-control.error{
+.error{
 
     color: #ff3860;
-    font-size: 9px;
+    font-size: 15px;
     height: 13px;
 }
 
 
 /* Singup Form Ends */
-
-
-/* Footer Section Starts */
-
-
-
-
-
-
-
-.footer {
-    display: grid;
-    /* grid-template-columns:repeat(auto-fit, minimax(200px, auto)); */
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    background: rgb(31, 30, 30);
-    position: relative;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 300px;
-    padding-top: 80px;
-}
-
-.footer-content h4 {
-    color: var(--white);
-    font-size: 20px;
-    /* margin-top: 40px; */
-    margin-bottom: 20px;
-    margin-left: 7rem;
-}
-
-.footer-content li {
-    list-style-type: none;
-    margin-bottom: 5px;
-    margin-left: 7rem;
-
-}
-
-.footer-content li a {
-
-    display: block;
-    color: #fff;
-    font-size: 15px;
-    font-weight: 400;
-    transition: all .40s ease;
-
-
-
-
-}
-
-.footer-content li a:hover {
-    transform: translateY(-3px) translateX(-5px);
-    cursor: pointer;
-    color: aqua;
-}
-
-
-.footer .logo-foot {
-    font-size: 2.5em;
-    font-weight: bolder;
-    /* color: var(--orange); */
-    color: var(--white);
-    margin-left: 9.5rem;
-    margin-bottom: 20px;
-
-
-}
-
-.footer .par {
-    color: var(--white);
-    line-height: 1.6;
-    /* font-weight: 1.7rem; */
-    font-size: 1.1rem;
-    margin-left: 8rem;
-    margin-bottom: 30px;
-    margin-top: 20px;
-    text-transform: uppercase;
-
-
-}
-.footer-icons{
-    margin-left: 9.6rem;
-}
-
-
-.footer-icons a {
-    display: inline-block;
-    /* font-size: 22px; */
-    /* color: var(--white); */
-    margin-right: 25px;
-    /* margin-left: 9.5rem; */
-    transition: all .40s ease;
-   
-
-}
-.fb{
-    color: #1877f2;
-    border: 0px solid;
-    height: 2rem;
-    width: 2rem;
-    line-height: 2rem;
-    border-radius: 2.5rem;
-    background: #eee;
-    font-size: 2rem;
-    margin-right: 3rem;
-    text-align: center;
-
-}
-
-.insta{
-    color: #c32aa3;
-    border: 0px solid;
-    height: 2rem;
-    width: 2rem;
-    line-height: 2rem;
-    border-radius: 2.5rem;
-    background: #eee;
-    font-size: 2rem;
-    margin-right: 3rem;
-    text-align: center;
-}
-.twitter{
-    color: #000000;
-    border: 0px solid;
-    height: 2rem;
-    width: 2rem;
-    line-height: 2rem;
-    border-radius: 2.5rem;
-    background: #eee;
-    font-size: 2rem;
-    margin-right: 3rem;
-    text-align: center;
-}
-
-.footer-icons a:hover {
-    transform: translateY(-5px);
-    cursor: pointer;
-    color: black;
-}
-
-
-
-/* Footer Section Ends */

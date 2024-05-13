@@ -46,8 +46,8 @@ public class ProductServlet extends HttpServlet {
 		String productName = request.getParameter(ProductStringUtils.PRODUCT_NAME);
 		String productDescription = request.getParameter(ProductStringUtils.PRODUCT_DESCRIPTION);
 		String productCategory = request.getParameter(ProductStringUtils.PRODUCT_CATEGORY);
-		String productPrice = request.getParameter(ProductStringUtils.PRODUCT_PRICE);
-		String productAvailability = request.getParameter(ProductStringUtils.PRODUCT_AVAILABILITY);
+        int productPrice = Integer.parseInt(request.getParameter(ProductStringUtils.PRODUCT_PRICE)); // Convert String to int
+        int productStock = Integer.parseInt(request.getParameter(ProductStringUtils.PRODUCT_STOCK));
 		String productModels = request.getParameter(ProductStringUtils.PRODUCT_MODEL);
 		String productSize = request.getParameter(ProductStringUtils.PRODUCT_SIZE);
 		String productColor = request.getParameter(ProductStringUtils.PRODUCT_COLOR);
@@ -59,7 +59,7 @@ public class ProductServlet extends HttpServlet {
 
  
         
-		ProductsModel productModel = new ProductsModel(productName,productDescription,productCategory,productPrice,productAvailability,productModels,productSize,productColor,productDialShape,productCompatibleOs,imagePart);	
+		ProductsModel productModel = new ProductsModel(productName,productDescription,productCategory,productPrice,productStock,productModels,productSize,productColor,productDialShape,productCompatibleOs,imagePart);	
 		String savePath = ProductStringUtils.IMG_DIR_SAVE_PATH;
         String fileName= productModel.getImageUrlFromPart();
         if(!fileName.isEmpty() && fileName !=null)

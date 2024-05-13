@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  
+  margin: 0;
+  padding: 10px;
+  background-color: rgb(0, 0, 0);
+  color: white;
+ 
+  background-size: cover; 
+  background-position: center; 
+  
+}
+
+
+
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+
+h2 {
+
+  color: black;
+  font-size: 24px;
+  margin-bottom: 50px;
+  
+}
+
+.about-us {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-top: 80px;
+  width: 5px;
+  
+ }
+.about-us h2{
+  color: white; 
+  font-size: 50px;
+}
+.privacy{
+  text-align: left; 
+flex: 1;
+  margin-left: 10px; 
+  margin-top: 50px;
+}
+.future-plans {
+  text-align: right; 
+  margin-left: 10px; 
+  margin-top: 50px;
+}
+
+
+.contact-form{
+  display: flex;
+  flex-direction: column;
+  
+ align-items: center;
+  width: 600px; 
+  height: 600px;
+  margin-top: 80px;
+  background-color: rgb(255, 255, 255);
+  padding: 5px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+.contact-form h2{
+  color: rgb(0, 0, 0); 
+  font-size: 50px;
+}
+
+
+.contact-form input,
+.contact-form textarea {
+  display: block;
+  background-color: #cfcbcbad;
+  height: 4px;
+  width: 80%;
+  padding: 20px;
+  margin-left: 50px;
+  margin-bottom: 15px;
+  border-radius: 20px;
+  border:5px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.contact-form button {
+  background-color: rgb(239, 172, 47);
+  color: rgb(255, 255, 255);
+  padding: 10px 20px;
+  border: none;
+  width: 160px;
+  height: 60px;
+  border-radius: 50px;
+  margin-left: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+ 
+  transform: scale(1.1); 
+  transition: transform 0.3s ease; 
+}
+
+.social-icon {
+  display: inline-block;
+  margin-right: 10px; 
+}
+
+.social-icon i {
+  font-size: 24px; 
+}
+.social-icon:hover i {
+  color: rgb(239, 172, 47);
+  
+  transform: scale(1.5); 
+  transition: transform 0.3s ease; 
+}

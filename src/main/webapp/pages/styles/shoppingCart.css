@@ -1,0 +1,139 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000000;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    background-color: #222222;
+    padding: 20px;
+    border-radius: 5px;
+    margin-right: 20px;
+   
+}
+
+.product-list {
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+    width: 400px;
+    height: 300px;
+  overflow-y: auto;
+}
+.product span {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .product span:nth-child(3) {
+    color: #ffa500; /* Orange color */
+  }
+
+  .product-list h2 {
+    margin-top: 0;
+    text-align: center;
+    font-size: 17px;
+  }
+
+  .product {
+    display: flex;
+    align-items: center;
+    background-color: #333333;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  
+  
+}
+.product .product-details {
+    flex-grow: 1;
+    margin-left: 10px; 
+  }
+  
+  .product .price {
+    color: #ffa500; 
+  }
+
+.product img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+.product .remove-btn{
+    margin-left: auto;
+    background-color: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 25px;
+    cursor: pointer;
+}
+.product .remove-btn:hover {
+    color: red; 
+  }
+
+.cart-summary {
+    width: 400px; 
+  height: 300px; 
+  padding: 20px;
+    background-color: #333333;
+    padding: 20px;
+    border-radius: 5px;
+    margin-right: 20px;
+  
+   
+  }
+
+  
+  .cart-summary h2 {
+    margin-top: 0;
+    text-align: center;
+    font-size: 17px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  th, td {
+    padding: 8px;
+    text-align: left;
+   
+    
+  }
+  
+  th {
+    
+    background-color: #444;
+  }
+  
+  tfoot th {
+    background-color: #666;
+  
+  }
+  
+  .checkout-btn {
+    background-color: #ffa500;
+    color: #000000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: bold;
+    font-weight: 20px;
+  }
+  .checkout-btn:hover {
+    background-color: rgb(160, 105, 2);
+    color: #fff; /* New text color on hover */
+  }

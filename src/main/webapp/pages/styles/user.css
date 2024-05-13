@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: rgb(31, 30, 30);
+}
+
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.skills h2 {
+    margin-top: 0;
+    color: #0a66c2;
+    font-size: 15px;
+}
+
+.profile-image img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+    margin-bottom: 0px;
+}
+
+.profile-info {
+    flex: 1;
+}
+
+.profile-info h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+
+.location {
+    color: #666;
+    margin: 5px 0;
+}
+
+.form-group {
+    font-size: 18px; 
+    margin-left: 250px;
+    margin-top: 16px;
+    font-size: 21px;
+    
+  }
+ 
+  
+  .form-actions{
+    text-align: center;
+    
+  }
+
+
+.log-out{
+    color: #000000;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 50px;
+    background-color: #ffc107;
+    margin: 0 auto; 
+    font-weight: bold;
+}
+
+
+.log-out:hover {
+    background-color: #dda809;
+}
+
+.profile-content {
+ height: 500px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+
+.bio {
+    background-color: #ffffff;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 20px;
+    font-size: 16px;
+  }
+  
+  .bio h2 {
+        margin-top: 0;
+        color: #000000;
+        font-size: 35px;
+        text-align: center;
+  }
+  .bio form{
+    font-size: 50px;
+  }
+ 
+
+  
+  .edit {
+    color: #000000;
+    text-decoration: none;
+    border: none;
+    width: 140px;
+    height: 60px;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 50px;
+    background-color: #ffc107;
+    font-weight: bold;
+    font-size: 17px;
+    
+    
+   
+  }
+  
+  .edit:hover {
+    background-color: #dda809;
+}
+  
+
+.skill-rating {
+    display: block;
+    margin-bottom: 10px;
+}
+.skill-rating .skill{
+    display: block;
+   
+}
+
+
+.rating {
+    color: #ffc107;
+    margin-right: 10px;
+}
+
+  
+  .info-group {
+    margin-bottom: 15px;
+    margin-left: 50px;
+  }
+  
+  .info-group h3 {
+    margin-top: 0;
+    color: #0a66c2;
+    font-size: 18px;
+  }
+  
+  .info-group p {
+    margin: 0;
+    color: #666;
+  }
+  
+.contact-info {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 20px;
+    font-size: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
+    
+  }
+  
+  .contact-info h2 {
+        margin-top: 0;
+        color: #000000;
+        font-size: 20px;
+        text-align: center;
+    
+    
+  }
+
+  .profile-sidebar {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.profile-sidebar h2 {
+    margin-top: 0;
+    margin-left: 50px;
+    
+}
+
+.profile-sidebar ul {
+    list-style-type:circle;
+    padding: 0;
+    margin: 0;
+    margin-left: 50px;
+}
+
+.profile-sidebar li {
+    margin-bottom: 10px;
+    color: #666;
+
+}
+
+.ad-section {
+    margin-left: 50px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+}
+
