@@ -4,19 +4,22 @@ import java.io.File;
 
 public class ProductStringUtils {
     public static final String INSERT_PRODUCT = "INSERT into products "
-            + "(prod_name,prod_description,prod_category, prod_price, prod_availability,prod_model, prod_size, prod_color,prod_dial_shape, prod_compatible_os,profile_Img)"
+            + "(prod_name,prod_description,prod_category, prod_price, prod_stock,prod_model, prod_size, prod_color,prod_dial_shape, prod_compatible_os,profile_Img)"
             + "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
     public static final String GET_ALL_PRODUCTS = "SELECT * FROM products";
     public static final String GET_PRODUCT_NAME = "SELECT * FROM products WHERE prod_name=?";
     public static final String DELETE_PRODUCT_INFO_BY_ID="DELETE FROM products WHERE prod_id = ?";
-    public static final String UPDATE_PRODUCT = "UPDATE products SET  prod_name=?,prod_description=?, prod_category=?, prod_price=?, prod_availability=?, prod_model=?, prod_size=?, prod_color=?, prod_dial_shape=?, prod_compatible_os=? WHERE prod_id=?";
+    public static final String UPDATE_PRODUCT = "UPDATE products SET  prod_name=?,prod_description=?, prod_category=?, prod_price=?, prod_stock=?, prod_model=?, prod_size=?, prod_color=?, prod_dial_shape=?, prod_compatible_os=? WHERE prod_id=?";
+    public static final String UPDATE_PRODUCT_WITH_IMAGE = "UPDATE products SET  prod_name=?,prod_description=?, prod_category=?, prod_price=?, prod_stock=?, prod_model=?, prod_size=?, prod_color=?, prod_dial_shape=?, prod_compatible_os=?, profile_Img=? WHERE prod_id=?";
+    public static final String UPDATE_USER_WITH_IMAGE = "UPDATE users SET  userName=?,email=?, location=?, phone=?, profile_Img=? WHERE user_id=?";
+    public static final String DELETE_CART_INFO_BY_ID="DELETE FROM carts WHERE cart_id = ?";
 
 
     public static final String PRODUCT_NAME = "prod_name";
     public static final String PRODUCT_DESCRIPTION = "prod_description";
     public static final String PRODUCT_CATEGORY = "prod_category";
     public static final String PRODUCT_PRICE = "prod_price";
-    public static final String PRODUCT_AVAILABILITY = "prod_availability";
+    public static final String PRODUCT_STOCK = "prod_stock";
     public static final String PRODUCT_MODEL = "prod_model";
     public static final String PRODUCT_SIZE = "prod_size";
     public static final String PRODUCT_COLOR = "prod_color";

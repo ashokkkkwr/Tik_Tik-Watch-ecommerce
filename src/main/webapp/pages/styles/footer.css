@@ -1,0 +1,144 @@
+
+/* Footer Section Starts */
+
+
+
+
+
+
+
+.footer {
+    display: grid;
+    /* grid-template-columns:repeat(auto-fit, minimax(200px, auto)); */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    background: rgb(31, 30, 30);
+    position: relative;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 300px;
+    padding-top: 80px;
+}
+
+.footer-content h4 {
+    color: var(--white);
+    font-size: 20px;
+    /* margin-top: 40px; */
+    margin-bottom: 20px;
+    margin-left: 7rem;
+}
+
+.footer-content li {
+    list-style-type: none;
+    margin-bottom: 5px;
+    margin-left: 7rem;
+
+}
+
+.footer-content li a {
+
+    display: block;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 400;
+    transition: all .40s ease;
+
+
+
+
+}
+
+.footer-content li a:hover {
+    transform: translateY(-3px) translateX(-5px);
+    cursor: pointer;
+    color: aqua;
+}
+
+
+.footer .logo-foot {
+    font-size: 2.5em;
+    font-weight: bolder;
+    /* color: var(--orange); */
+    color: var(--white);
+    margin-left: 9.5rem;
+    margin-bottom: 20px;
+
+
+}
+
+.footer .par {
+    color: var(--white);
+    line-height: 1.6;
+    /* font-weight: 1.7rem; */
+    font-size: 1.1rem;
+    margin-left: 9.5rem;
+    margin-bottom: 30px;
+    margin-top: 20px;
+    text-transform: uppercase;
+
+
+}
+.footer-icons{
+    margin-left: 9.5rem;
+}
+
+
+.footer-icons a {
+    display: inline-block;
+    /* font-size: 22px; */
+    /* color: var(--white); */
+    margin-right: 25px;
+    /* margin-left: 9.5rem; */
+    transition: all .40s ease;
+   
+
+}
+.fb{
+    color: #1877f2;
+    border: 0px solid;
+    height: 2rem;
+    width: 2rem;
+    line-height: 2rem;
+    border-radius: 2.5rem;
+    background: #eee;
+    font-size: 2rem;
+    margin-right: 3rem;
+    text-align: center;
+
+}
+
+.insta{
+    color: #c32aa3;
+    border: 0px solid;
+    height: 2rem;
+    width: 2rem;
+    line-height: 2rem;
+    border-radius: 2.5rem;
+    background: #eee;
+    font-size: 2rem;
+    margin-right: 3rem;
+    text-align: center;
+}
+.twitter{
+    color: #000000;
+    border: 0px solid;
+    height: 2rem;
+    width: 2rem;
+    line-height: 2rem;
+    border-radius: 2.5rem;
+    background: #eee;
+    font-size: 2rem;
+    margin-right: 3rem;
+    text-align: center;
+}
+
+.footer-icons a:hover {
+    transform: translateY(-5px);
+    cursor: pointer;
+    color: black;
+}
+
+
+
+/* Footer Section Ends */

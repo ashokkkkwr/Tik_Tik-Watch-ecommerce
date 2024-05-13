@@ -17,7 +17,29 @@
    
 
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-  
+   <style>
+        body {
+            background-color: black;
+            color: white;
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        .login button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 20px;
+            text-decoration: none;
+        }
+        
+        .login button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 
 <body>
@@ -41,28 +63,67 @@
     <header class="header">
         <a href="index.html" class="logo">TIK<span>TIK.</span></a>
         <nav class="navbar">
-            <a href="index.html">HOME</a>
-            <a href="products.html">PRODUCT</a>
-            <a href="#aboutus">ABOUT US</a>
-            <a href="signup.html">SIGN UP</a>
+           <a href="${pageContext.request.contextPath}/pages/home.jsp" style="text-decoration:none; color: orange;">
+    <i class="fas fa-home"></i> Home
+</a>
+
+
+           <a href="${pageContext.request.contextPath}/CartServlet">            <div class="fa fa-shopping-cart" id="cart-btn"></div>
+           cart</a>
+           
+         <a href="${pageContext.request.contextPath}/pages/aboutUs.jsp">
+    <i class="fas fa-info-circle"></i> About Us
+</a>
+
+<a href="${pageContext.request.contextPath}/OrderServlet">
+    <i class="fas fa-shopping-bag"></i> Order
+</a>
+
+
+
+            
             
             
             
         </nav>
 
-        <div class="icons">
+<div class="icons">
 
-            <a href="cart.html">
-            <div class="fa fa-shopping-cart" id="cart-btn">0</div>
-            </a>
-            <div class="fa fa-user" id="user-btn" onclick="menuToggle();"></div>
+            
+            
+          <!-- Check if user is logged in -->
+<% if (request.getSession().getAttribute("email") != null) { %>
+<div class="icons">
+    <a href="${pageContext.request.contextPath}/GetUsers">
+        <div class="fa fa-user" id="user-btn" onclick="menuToggle();"></div>
+        </a>
+       
+        <form action="${pageContext.request.contextPath}/LogoutServlet" method="post">
+         <div>
+         <button type="submit" class="fas fa-sign-out-alt"></button>
+           </div> 
+           
+        
+        </form>
+        </div>
+        
+    
+<% } else { %>
+    <!-- Show login link if not logged in -->
+    <div class="login">
+    
+    <a href="login.jsp">
+<button class="fas fa-sign-in-alt">Login</button>    </a>
+    </div>
+<% } %>
+
             <!-- Sub Menu for the user icon -->
             <ul class="menu-items">
                 <li><img src="" alt=""><a href="#">View Profile</a></li>
                 <li><img src="" alt=""><a href="#">Edit Profile</a></li>
                 <li><img src="" alt=""><a href="#">Log Out</a></li>
             </ul>
-        </div>
+</div>
 
     </header>
 
@@ -83,19 +144,22 @@
         <section class="hero-section">
             <div class="hero-container"></div>
             <div class="hero-data">
+                <p class="hero-bottom-data1">TIKTIK is always ready to serve our customers.</p>
+
+                <h1 class="hero-heading1">Elegance that endures</h1>
                 <h1 class="hero-heading">Wear the <span class="span-heading">Future.</span></h1>
-                <p class="hero-bottom data">TIKTIK is always ready to serve our customers.</p>
+                
+                <p class="hero-bottom-data">Crafted for perfection, made for you.</p>
 
 
                 <!-- Search box -->
-                <form action="" class="search-box">
+             <form action="${pageContext.request.contextPath}/SearchServlet" class="search-box" method="get">
                     <!-- icon -->
                     <i class="fas fa-search"></i>
                     <!-- Input -->
-                    <input type="text" class="search-input" placeholder="Search here" name="search" required>
+                    <input type="text" class="search-input" placeholder="Search here" name="query" required>
                     <!-- btn -->
                     <input type="submit" class="search-btn" value="Search">
-
                 </form>
 
 
@@ -139,6 +203,7 @@
     });
   });
 </script>
+
             
 
 

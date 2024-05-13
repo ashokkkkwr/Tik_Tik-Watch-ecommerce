@@ -132,6 +132,9 @@ body {
     visibility: hidden;
     opacity: 0;
 }
+.icons{
+	display:flex;
+}
 
 
 .icons .menu-items.active {
@@ -191,7 +194,7 @@ span {
     box-shadow: var(--box-shadow);
     background: rgb(31, 30, 30);
     max-width: 125rem;
-    height: 45rem;
+    height: 57rem;
 
 
 
@@ -201,20 +204,36 @@ span {
 }
 
 .hero-image {
-    width: 32rem;
-    height: 25rem;
+    width: 39rem;
+    height: 32rem;
     border-radius: 3rem;
-    margin-right: 15rem;
+    margin-right: 0rem;
+    margin-left: 5rem;
+    margin-top: 2rem;
 
 
+}
+.hero-heading{
+    margin-top: 0vh;
+}
+.hero-heading1{
+    margin-top: 6vh;
+}
+
+.hero-bottom-data{
+    margin-top: 6vh;
+}
+.hero-bottom-data1{
+    margin-top: 10vh;
 }
 
 .search-box {
     background-color: #fff;
     height: 3rem;
+    width: 26rem;
     display: flex;
     align-items: center;
-    margin-top: 25px;
+    margin-top: 0px;
     padding: 0px 5px 0px 20px;
     border-radius: 30px;
 }
@@ -324,6 +343,7 @@ span {
     color: white;
     line-height: 2;
     padding: 10px 0;
+    margin-left: -20vh;
 
 }
 

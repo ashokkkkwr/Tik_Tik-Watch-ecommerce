@@ -5,6 +5,7 @@ import java.io.File;
 import javax.servlet.http.Part;
 
 public class UsersModel {
+	private int userId;
 	private String userName;
 	private String email;
 	private String location;
@@ -24,8 +25,17 @@ public class UsersModel {
 		this.isAdmin = isAdmin;
 		this.imageUrlFromPart=getImageUrl(imagePart);
 	}
+	
 	public UsersModel() {
 		
+	}
+	
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	public String getUserName() {

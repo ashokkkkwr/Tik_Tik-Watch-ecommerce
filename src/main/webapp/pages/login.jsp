@@ -39,19 +39,18 @@
 <input type="text" id="email"  name="email" required>
 <label for="password">Password:</label>
 <input type="password" id="password" name="password" required>
-                <p><a href="signup.html">Forget Password?</a></p>
+                <p><a href=${pageContext.request.contextPath}/pages/signup.jsp>Don't have an account?</a></p>
                 <input type="submit" value="Log In">
-            </form>
-        </div>
-    </div>
- <% 
+                 <% 
         String successMessage = (String) request.getAttribute(StringUtils.SUCCESS_MESSAGE);
         String errorMessage = (String) request.getAttribute(StringUtils.ERROR_MESSAGE);
 
         if (errorMessage != null && !errorMessage.isEmpty()) {
         %>
         <!-- Display error message -->
-         <div class="alert alert-danger mt-2" role="alert">
+         <div style="color: #ff3860;
+    font-size: 15px;
+    height: 13px;">
             <%= errorMessage %>
         </div>
         <% } %>
@@ -64,6 +63,10 @@
             <%= successMessage %>
         </div>
         <% } %>
+            </form>
+        </div>
+    </div>
+
 </div>
 
 

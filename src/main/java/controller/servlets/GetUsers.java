@@ -23,17 +23,30 @@ public class GetUsers extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("yo user ko pugina");
+        // Retrieve email from the session
         String email = (String) request.getSession().getAttribute("Adminemail");
-        System.out.println(email);
-        List<UsersModel> users = dbController.getAllUsers1(email);
-        // Fetch admin email from the session
+        if (email == null || email.isEmpty()) {
+            // If "Adminemail" is not found in the session, try "email"
+            email = (String) request.getSession().getAttribute("email");
+            System.out.println(email);
+        }
 
-        // Set the user as an attribute in the request object
-        request.setAttribute("loggedInUser", users);
+        if (email != null && !email.isEmpty()) {
+            // Fetch users from the database based on the email
+            List<UsersModel> users = dbController.getAllUsers1(email);
 
-        // Forward the request to the singleRegisterUser.jsp page
-        request.getRequestDispatcher("pages/singleRegisterUser.jsp").forward(request, response);
+            // Set the users as an attribute in the request object
+            request.setAttribute("loggedInUser", users);
+
+            // Forward the request to the singleRegisterUser.jsp page
+            request.getRequestDispatcher("pages/singleRegisterUser.jsp").forward(request, response);
+
+           
+        } else {
+            // If neither "Adminemail" nor "email" is found in the session, redirect to login page
+            response.sendRedirect("login.jsp");
+        }
     }
+
 
 }

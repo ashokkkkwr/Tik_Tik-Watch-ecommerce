@@ -51,13 +51,26 @@ public class AuthenticationFilter implements Filter {
     	chain.doFilter(req, res);
         return;
     }
+    if(!isLoggedIn && isHomeJ) {
+    	chain.doFilter(req, res);
+        return;
+    }
+    if(!isLoggedIn && uri.endsWith("CartServlet")) {
+        res.sendRedirect(req.getContextPath() + "/pages/login.jsp");
+        return;
+    }
+    if(!isLoggedIn && uri.endsWith("OrderServlet")) {
+        res.sendRedirect(req.getContextPath() + "/pages/login.jsp");
+        return;
+    }
+     
         
         
         if(isLoggedIn && isAdminJ) {
        	 res.sendRedirect(req.getContextPath() + "/pages/admin.jsp");
             return;
        }
-        if (uri.endsWith("login.jsp") || uri.endsWith("signup.jsp") || uri.endsWith(".css") || uri.endsWith(".png")|| uri.endsWith(".jpg") || uri.endsWith(".jpeg")||uri.endsWith("UsersServlet") ||uri.endsWith("CrudServlet") ||uri.endsWith("ProductsServlet") ||uri.endsWith("ProductServlet") || uri.endsWith("CartServlet")||uri.endsWith("GetUsers")|| uri.endsWith("addProduct.jsp")||uri.endsWith("singleRegisterUser.jsp") ||uri.endsWith("editProduct.jsp")||uri.endsWith("UserProductServlet")||uri.endsWith("productDetails.jsp") ){
+        if (uri.endsWith("login.jsp") || uri.endsWith("signup.jsp") || uri.endsWith(".css") || uri.endsWith(".png")|| uri.endsWith(".jpg") || uri.endsWith(".jpeg")||uri.endsWith("UsersServlet") ||uri.endsWith("CrudServlet") ||uri.endsWith("ProductsServlet") ||uri.endsWith("ProductServlet") || uri.endsWith("CartServlet")||uri.endsWith("GetUsers")|| uri.endsWith("addProduct.jsp")||uri.endsWith("singleRegisterUser.jsp") ||uri.endsWith("editProduct.jsp")||uri.endsWith("UserProductServlet")||uri.endsWith("productDetails.jsp")||uri.endsWith("OrderServlet")||uri.endsWith("adminOrder.jsp")||uri.endsWith("AdminOrder")||uri.endsWith("search.jsp")||uri.endsWith("SearchServlet")||uri.endsWith("CrudUserServlet")||uri.endsWith("aboutUs.jsp")||uri.endsWith("ContactUsServlet")||uri.endsWith("AllContacts") ){
             chain.doFilter(req, res);
             return;
         }

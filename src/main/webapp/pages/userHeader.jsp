@@ -7,7 +7,7 @@
 				</a>
 			</h1>
 			<ul class="main-nav">
-				<li><a href="${pageContext.request.contextPath}/pages/home.jsp">Home</a>
+				<li>
 				<li>
 					<form action="${pageContext.request.contextPath}/LogoutServlet" method="post">
 						<button type="submit" class="btn btn-danger">
